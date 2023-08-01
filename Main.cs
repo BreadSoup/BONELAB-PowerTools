@@ -1,9 +1,19 @@
-﻿using MelonLoader;
+﻿using BoneLib;
+using BoneLib.BoneMenu;
+using BoneLib.BoneMenu.Elements;
+using MelonLoader;
+using PowerTools.Tools;
+using SLZ.VRMK;
+using UnityEngine;
 
-namespace bonelab_template
+namespace PowerTools
 {
     internal partial class Main : MelonMod
     {
+        public static MenuCategory category;
+
+        public static MelonPreferences_Category MelonPrefCategory { get; private set; }
+
         public override void OnEarlyInitializeMelon()
         {
             base.OnEarlyInitializeMelon();
@@ -11,7 +21,31 @@ namespace bonelab_template
 
         public override void OnInitializeMelon()
         {
-            base.OnInitializeMelon();
+            BoneLib.Hooking.OnLevelInitialized += (_) => { OnSceneAwake(); };
+            MelonPrefCategory = MelonPreferences.CreateCategory("Power Tools");
+            DeathTimeCustomizer.MelonPreferencesCreator();
+
+
+            category = MenuManager.CreateCategory(
+            "<color=#00ff72>P</color>" +
+            "<color=#00ff80>o</color>" +
+            "<color=#00ff8d>w</color>" +
+            "<color=#00ff99>e</color>" +
+            "<color=#00ffa5>r</color>" +
+            "<color=#00ffb0> </color>" +
+            "<color=#00ffba>T</color>" +
+            "<color=#00ffc3>o</color>" +
+            "<color=#00ffcc>o</color>" +
+            "<color=#00ffd4>l</color>" +
+            "<color=#00ffd4>s</color>"
+                , Color.white);
+            DeathTimeCustomizer.BonemenuCreator();
+        }
+
+        public void OnSceneAwake()
+        {
+            BoneLib.Player.rigManager.openControllerRig.playerHealth.deathTimeAmount = 0;
+            DeathTimeCustomizer.DeathTimeSetter();
         }
 
         public override void OnLateInitializeMelon()
@@ -21,7 +55,7 @@ namespace bonelab_template
 
         public override void OnUpdate()
         {
-            base.OnUpdate();
+
         }
 
         public override void OnFixedUpdate()

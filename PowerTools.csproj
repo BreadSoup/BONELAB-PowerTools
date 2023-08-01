@@ -1,0 +1,218 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{0DEB755F-D57A-4285-9D70-C592E340CDB4}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <RootNamespace>PowerTools</RootNamespace>
+    <AssemblyName>PowerTools</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="BuildInfo.cs" />
+    <Compile Include="Main.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Tools\DeathTimeCustomizer.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="0Harmony">
+      <HintPath>D:\SteamLibrary\steamapps\common\BONELAB\MelonLoader\0Harmony.dll</HintPath>
+    </Reference>
+    <Reference Include="Assembly-CSharp">
+      <HintPath>D:\SteamLibrary\steamapps\common\BONELAB\MelonLoader\Managed\Assembly-CSharp.dll</HintPath>
+    </Reference>
+    <Reference Include="Assembly-CSharp-firstpass">
+      <HintPath>D:\SteamLibrary\steamapps\common\BONELAB\MelonLoader\Managed\Assembly-CSharp-firstpass.dll</HintPath>
+    </Reference>
+    <Reference Include="BoneLib">
+      <HintPath>D:\SteamLibrary\steamapps\common\BONELAB\Mods\BoneLib.dll</HintPath>
+    </Reference>
+    <Reference Include="Boo.Lang">
+      <HintPath>D:\SteamLibrary\steamapps\common\BONELAB\MelonLoader\Managed\Boo.Lang.dll</HintPath>
+    </Reference>
+    <Reference Include="Boo.Lang.Compiler">
+      <HintPath>D:\SteamLibrary\steamapps\common\BONELAB\MelonLoader\Managed\Boo.Lang.Compiler.dll</HintPath>
+    </Reference>
+    <Reference Include="Boo.Lang.Extensions">
+      <HintPath>D:\SteamLibrary\steamapps\common\BONELAB\MelonLoader\Managed\Boo.Lang.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="Boo.Lang.Parser">
+      <HintPath>D:\SteamLibrary\steamapps\common\BONELAB\MelonLoader\Managed\Boo.Lang.Parser.dll</HintPath>
+    </Reference>
+    <Reference Include="Boo.Lang.PatternMatching">
+      <HintPath>D:\SteamLibrary\steamapps\common\BONELAB\MelonLoader\Managed\Boo.Lang.PatternMatching.dll</HintPath>
+    </Reference>
+    <Reference Include="Boo.Lang.Useful">
+      <HintPath>D:\SteamLibrary\steamapps\common\BONELAB\MelonLoader\Managed\Boo.Lang.Useful.dll</HintPath>
+    </Reference>
+    <Reference Include="ch.sycoforge.Decal">
+      <HintPath>D:\SteamLibrary\steamapps\common\BONELAB\MelonLoader\Managed\ch.sycoforge.Decal.dll</HintPath>
+    </Reference>
+    <Reference Include="cscompmgd, Version=8.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>D:\SteamLibrary\steamapps\common\BONELAB\MelonLoader\Managed\cscompmgd.dll</HintPath>
+    </Reference>
+    <Reference Include="CustomMarshalers" />
+    <Reference Include="Facepunch.Steamworks.Win64">
+      <HintPath>D:\SteamLibrary\steamapps\common\BONELAB\MelonLoader\Managed\Facepunch.Steamworks.Win64.dll</HintPath>
+    </Reference>
+    <Reference Include="Google.Protobuf">
+      <HintPath>D:\SteamLibrary\steamapps\common\BONELAB\MelonLoader\Managed\Google.Protobuf.dll</HintPath>
+    </Reference>
+    <Reference Include="Grpc.Core">
+      <HintPath>D:\SteamLibrary\steamapps\common\BONELAB\MelonLoader\Managed\Grpc.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="HBAO.Demo.Runtime">
+      <HintPath>D:\SteamLibrary\steamapps\common\BONELAB\MelonLoader\Managed\HBAO.Demo.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="HBAO.Demo.Universal.Runtime">
+      <HintPath>D:\SteamLibrary\steamapps\common\BONELAB\MelonLoader\Managed\HBAO.Demo.Universal.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="HBAO.Runtime">
+      <HintPath>D:\SteamLibrary\steamapps\common\BONELAB\MelonLoader\Managed\HBAO.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="HBAO.Universal.Runtime">
+      <HintPath>D:\SteamLibrary\steamapps\common\BONELAB\MelonLoader\Managed\HBAO.Universal.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="I18N">
+      <HintPath>D:\SteamLibrary\steamapps\common\BONELAB\MelonLoader\Managed\I18N.dll</HintPath>
+    </Reference>
+    <Reference Include="I18N.CJK">
+      <HintPath>D:\SteamLibrary\steamapps\common\BONELAB\MelonLoader\Managed\I18N.CJK.dll</HintPath>
+    </Reference>
+    <Reference Include="I18N.MidEast">
+      <HintPath>D:\SteamLibrary\steamapps\common\BONELAB\MelonLoader\Managed\I18N.MidEast.dll</HintPath>
+    </Reference>
+    <Reference Include="I18N.Other">
+      <HintPath>D:\SteamLibrary\steamapps\common\BONELAB\MelonLoader\Managed\I18N.Other.dll</HintPath>
+    </Reference>
+    <Reference Include="I18N.Rare">
+      <HintPath>D:\SteamLibrary\steamapps\common\BONELAB\MelonLoader\Managed\I18N.Rare.dll</HintPath>
+    </Reference>
+    <Reference Include="I18N.West">
+      <HintPath>D:\SteamLibrary\steamapps\common\BONELAB\MelonLoader\Managed\I18N.West.dll</HintPath>
+    </Reference>
+    <Reference Include="IBM.Data.DB2">
+      <HintPath>D:\SteamLibrary\steamapps\common\BONELAB\MelonLoader\Managed\IBM.Data.DB2.dll</HintPath>
+    </Reference>
+    <Reference Include="Iced">
+      <HintPath>D:\SteamLibrary\steamapps\common\BONELAB\MelonLoader\Managed\Iced.dll</HintPath>
+    </Reference>
+    <Reference Include="Il2CppMicrosoft.MixedReality.OpenXR">
+      <HintPath>D:\SteamLibrary\steamapps\common\BONELAB\MelonLoader\Managed\Il2CppMicrosoft.MixedReality.OpenXR.dll</HintPath>
+    </Reference>
+    <Reference Include="Il2CppMono.Security">
+      <HintPath>D:\SteamLibrary\steamapps\common\BONELAB\MelonLoader\Managed\Il2CppMono.Security.dll</HintPath>
+    </Reference>
+    <Reference Include="Il2Cppmscorlib">
+      <HintPath>D:\SteamLibrary\steamapps\common\BONELAB\MelonLoader\Managed\Il2Cppmscorlib.dll</HintPath>
+    </Reference>
+    <Reference Include="Il2CppNewtonsoft.Json">
+      <HintPath>D:\SteamLibrary\steamapps\common\BONELAB\MelonLoader\Managed\Il2CppNewtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="Il2CppSystem">
+      <HintPath>D:\SteamLibrary\steamapps\common\BONELAB\MelonLoader\Managed\Il2CppSystem.dll</HintPath>
+    </Reference>
+    <Reference Include="Il2CppSystem.Configuration">
+      <HintPath>D:\SteamLibrary\steamapps\common\BONELAB\MelonLoader\Managed\Il2CppSystem.Configuration.dll</HintPath>
+    </Reference>
+    <Reference Include="Il2CppSystem.Core">
+      <HintPath>D:\SteamLibrary\steamapps\common\BONELAB\MelonLoader\Managed\Il2CppSystem.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Il2CppSystem.Data">
+      <HintPath>D:\SteamLibrary\steamapps\common\BONELAB\MelonLoader\Managed\Il2CppSystem.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="Il2CppSystem.IO.Compression">
+      <HintPath>D:\SteamLibrary\steamapps\common\BONELAB\MelonLoader\Managed\Il2CppSystem.IO.Compression.dll</HintPath>
+    </Reference>
+    <Reference Include="Il2CppSystem.IO.Compression.FileSystem">
+      <HintPath>D:\SteamLibrary\steamapps\common\BONELAB\MelonLoader\Managed\Il2CppSystem.IO.Compression.FileSystem.dll</HintPath>
+    </Reference>
+    <Reference Include="Il2CppSystem.Numerics">
+      <HintPath>D:\SteamLibrary\steamapps\common\BONELAB\MelonLoader\Managed\Il2CppSystem.Numerics.dll</HintPath>
+    </Reference>
+    <Reference Include="Il2CppSystem.Runtime.Serialization">
+      <HintPath>D:\SteamLibrary\steamapps\common\BONELAB\MelonLoader\Managed\Il2CppSystem.Runtime.Serialization.dll</HintPath>
+    </Reference>
+    <Reference Include="Il2CppSystem.ServiceModel.Internals">
+      <HintPath>D:\SteamLibrary\steamapps\common\BONELAB\MelonLoader\Managed\Il2CppSystem.ServiceModel.Internals.dll</HintPath>
+    </Reference>
+    <Reference Include="Il2CppSystem.Xml">
+      <HintPath>D:\SteamLibrary\steamapps\common\BONELAB\MelonLoader\Managed\Il2CppSystem.Xml.dll</HintPath>
+    </Reference>
+    <Reference Include="Il2CppSystem.Xml.Linq">
+      <HintPath>D:\SteamLibrary\steamapps\common\BONELAB\MelonLoader\Managed\Il2CppSystem.Xml.Linq.dll</HintPath>
+    </Reference>
+    <Reference Include="MelonLoader">
+      <HintPath>D:\SteamLibrary\steamapps\common\BONELAB\MelonLoader\MelonLoader.dll</HintPath>
+    </Reference>
+    <Reference Include="MeshBakerCore">
+      <HintPath>D:\SteamLibrary\steamapps\common\BONELAB\MelonLoader\Managed\MeshBakerCore.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Web.Infrastructure">
+      <HintPath>D:\SteamLibrary\steamapps\common\BONELAB\MelonLoader\Managed\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="Mono.CompilerServices.SymbolWriter">
+      <HintPath>D:\SteamLibrary\steamapps\common\BONELAB\MelonLoader\Managed\Mono.CompilerServices.SymbolWriter.dll</HintPath>
+    </Reference>
+    <Reference Include="Mono.CSharp">
+      <HintPath>D:\SteamLibrary\steamapps\common\BONELAB\MelonLoader\Managed\Mono.CSharp.dll</HintPath>
+    </Reference>
+    <Reference Include="Mono.Data.Sqlite">
+      <HintPath>D:\SteamLibrary\steamapps\common\BONELAB\MelonLoader\Managed\Mono.Data.Sqlite.dll</HintPath>
+    </Reference>
+    <Reference Include="Mono.Data.Tds">
+      <HintPath>D:\SteamLibrary\steamapps\common\BONELAB\MelonLoader\Managed\Mono.Data.Tds.dll</HintPath>
+    </Reference>
+    <Reference Include="Mono.Messaging">
+      <HintPath>D:\SteamLibrary\steamapps\common\BONELAB\MelonLoader\Managed\Mono.Messaging.dll</HintPath>
+    </Reference>
+    <Reference Include="Mono.Posix">
+      <HintPath>D:\SteamLibrary\steamapps\common\BONELAB\MelonLoader\Managed\Mono.Posix.dll</HintPath>
+    </Reference>
+    <Reference Include="Mono.Security">
+      <HintPath>D:\SteamLibrary\steamapps\common\BONELAB\MelonLoader\Managed\Mono.Security.dll</HintPath>
+    </Reference>
+    <Reference Include="Mono.WebBrowser">
+      <HintPath>D:\SteamLibrary\steamapps\common\BONELAB\MelonLoader\Managed\Mono.WebBrowser.dll</HintPath>
+    </Reference>
+    <Reference Include="SLZ.Marrow">
+      <HintPath>D:\SteamLibrary\steamapps\common\BONELAB\MelonLoader\Managed\SLZ.Marrow.dll</HintPath>
+    </Reference>
+    <Reference Include="UnhollowerBaseLib">
+      <HintPath>D:\SteamLibrary\steamapps\common\BONELAB\MelonLoader\Managed\UnhollowerBaseLib.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.CoreModule">
+      <HintPath>D:\SteamLibrary\steamapps\common\BONELAB\MelonLoader\Managed\UnityEngine.CoreModule.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
