@@ -24,6 +24,7 @@ namespace PowerTools
             BoneLib.Hooking.OnLevelInitialized += (_) => { OnSceneAwake(); };
             MelonPrefCategory = MelonPreferences.CreateCategory("Power Tools");
             DeathTimeCustomizer.MelonPreferencesCreator();
+            ButtonDisabler.MelonPreferencesCreator();
 
 
             category = MenuManager.CreateCategory(
@@ -40,12 +41,13 @@ namespace PowerTools
             "<color=#00ffd4>s</color>"
                 , Color.white);
             DeathTimeCustomizer.BonemenuCreator();
+            ButtonDisabler.BonemenuCreator();
         }
 
         public void OnSceneAwake()
         {
-            BoneLib.Player.rigManager.openControllerRig.playerHealth.deathTimeAmount = 0;
             DeathTimeCustomizer.DeathTimeSetter();
+            ButtonDisabler.DisableButtons();
         }
 
         public override void OnLateInitializeMelon()

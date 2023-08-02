@@ -15,14 +15,19 @@ namespace PowerTools.Tools
         static float DeathTime;
 
         public static MelonPreferences_Entry<bool> MelonPrefEnabled { get; private set; }
-        public static bool IsEnabled { get; private set; }
+        public static bool DeathTimeCustomizerIsEnabled { get; private set; }
         public static MelonPreferences_Entry<float> MelonPrefDeathTime { get; private set; }
 
         public static void MelonPreferencesCreator()
         {
-            MelonPrefEnabled = Main.MelonPrefCategory.CreateEntry<bool>("IsEnabled", false, null, null, false, false, null, null);
-            IsEnabled = MelonPrefEnabled.Value;
+            MelonPrefEnabled = Main.MelonPrefCategory.CreateEntry<bool>("DeathTimeCustomizerIsEnabled", false, null, null, false, false, null, null);
+            DeathTimeCustomizerIsEnabled = MelonPrefEnabled.Value;
             MelonPrefDeathTime = Main.MelonPrefCategory.CreateEntry<float>("Damage Threshold", 3f, null, null, false, false, null, null);
+
+            if (MelonPrefEnabled != null )
+            {
+                DeathTimeCustomizerIsEnabled = MelonPrefEnabled.Value;
+            }
 
             if (MelonPrefDeathTime != null)
             {
@@ -34,7 +39,7 @@ namespace PowerTools.Tools
         {
             var DeathTimeCustomizer = Main.category.CreateCategory("Death Time Customizer", "#FC221b");
 
-            DeathTimeCustomizer.CreateBoolElement("Mod Toggle", Color.yellow, IsEnabled, new Action<bool>(OnSetEnabled));
+            DeathTimeCustomizer.CreateBoolElement("Mod Toggle", Color.yellow, DeathTimeCustomizerIsEnabled, new Action<bool>(OnSetEnabled));
             var DamageThreshold = DeathTimeCustomizer.CreateFloatElement("Death Time", "#FC221b", DeathTime, 1f, 0f, 100f, (dt) =>
             {
                 DeathTime = dt;
@@ -45,7 +50,7 @@ namespace PowerTools.Tools
         }
         public static void DeathTimeSetter()
         {
-            if (BoneLib.Player.rigManager != null && IsEnabled)
+            if (BoneLib.Player.rigManager != null && DeathTimeCustomizerIsEnabled)
             {
                 BoneLib.Player.rigManager.openControllerRig.playerHealth.deathTimeAmount = DeathTime;
             }
@@ -57,7 +62,7 @@ namespace PowerTools.Tools
             {
                 BoneLib.Player.rigManager.openControllerRig.playerHealth.deathTimeAmount = 3;
             }
-            IsEnabled = value;
+            DeathTimeCustomizerIsEnabled = value;
             MelonPrefEnabled.Value = value;
             Main.MelonPrefCategory.SaveToFile(false);
         }
