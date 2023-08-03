@@ -3,71 +3,53 @@ using BoneLib.BoneMenu;
 using BoneLib.BoneMenu.Elements;
 using MelonLoader;
 using PowerTools.Tools;
-using SLZ.VRMK;
 using UnityEngine;
 
 namespace PowerTools
 {
     internal partial class Main : MelonMod
     {
-        public static MenuCategory category;
+        public static MenuCategory Category;
 
         public static MelonPreferences_Category MelonPrefCategory { get; private set; }
-
-        public override void OnEarlyInitializeMelon()
-        {
-            base.OnEarlyInitializeMelon();
-        }
+        
 
         public override void OnInitializeMelon()
         {
-            BoneLib.Hooking.OnLevelInitialized += (_) => { OnSceneAwake(); };
+            Hooking.OnLevelInitialized += (_) => { OnSceneAwake(); };
             MelonPrefCategory = MelonPreferences.CreateCategory("Power Tools");
             DeathTimeCustomizer.MelonPreferencesCreator();
             ButtonDisabler.MelonPreferencesCreator();
 
 
-            category = MenuManager.CreateCategory(
-            "<color=#00ff72>P</color>" +
-            "<color=#00ff80>o</color>" +
-            "<color=#00ff8d>w</color>" +
-            "<color=#00ff99>e</color>" +
-            "<color=#00ffa5>r</color>" +
-            "<color=#00ffb0> </color>" +
-            "<color=#00ffba>T</color>" +
-            "<color=#00ffc3>o</color>" +
-            "<color=#00ffcc>o</color>" +
-            "<color=#00ffd4>l</color>" +
-            "<color=#00ffd4>s</color>"
+            Category = MenuManager.CreateCategory(
+                "<color=#00FF72>P</color>" +
+                "<color=#00FF80>o</color>" +
+                "<color=#00FF8D>w</color>" +
+                "<color=#00FF99>e</color>" +
+                "<color=#00FFA5>r</color>" +
+                "<color=#00FFB0> </color>" +
+                "<color=#00FFBA>T</color>" +
+                "<color=#00FFC3>o</color>" +
+                "<color=#00FFCC>o</color>" +
+                "<color=#00FFD4>l</color>" +
+                "<color=#00FFD4>s</color>"
                 , Color.white);
-            DeathTimeCustomizer.BonemenuCreator();
-            ButtonDisabler.BonemenuCreator();
+            DeathTimeCustomizer.BoneMenuCreator();
+            ButtonDisabler.BoneMenuCreator();
         }
 
-        public void OnSceneAwake()
+        private static void OnSceneAwake()
         {
             DeathTimeCustomizer.DeathTimeSetter();
             ButtonDisabler.DisableButtons();
         }
-
-        public override void OnLateInitializeMelon()
-        {
-            base.OnLateInitializeMelon();
-        }
-
+        
         public override void OnUpdate()
         {
 
         }
 
-        public override void OnFixedUpdate()
-        {
-            base.OnFixedUpdate();
-        }
 
-        public override void OnLateUpdate()
-        {
-            base.OnLateUpdate();
-        }
     }
 }

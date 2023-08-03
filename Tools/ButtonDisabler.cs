@@ -1,45 +1,39 @@
-﻿using Il2CppSystem;
-using MelonLoader;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using MelonLoader;
 using UnityEngine;
 
 namespace PowerTools.Tools
 {
-    internal class ButtonDisabler
+    internal static class ButtonDisabler
     {
-        public static bool EndOfLevelButton;
+        private static bool _endOfLevelButton;
 
-        public static MelonPreferences_Entry<bool> MelonPrefEnabled { get; private set; }
-        public static bool ButtonDisablerIsEnabled { get; private set; }
-        public static MelonPreferences_Entry<bool> MelonPrefEndOfLevelButton { get; private set; }
+        private static MelonPreferences_Entry<bool> MelonPrefEnabled { get;  set; }
+        private static bool ButtonDisablerIsEnabled { get; set; }
+        private static MelonPreferences_Entry<bool> MelonPrefEndOfLevelButton { get; set; }
 
         public static void MelonPreferencesCreator()
         {
-            MelonPrefEnabled = Main.MelonPrefCategory.CreateEntry<bool>("ButtonDisablerIsEnabled", false, null, null, false, false, null, null);
+            MelonPrefEnabled = Main.MelonPrefCategory.CreateEntry("ButtonDisablerIsEnabled", false);
             ButtonDisablerIsEnabled = MelonPrefEnabled.Value;
-            MelonPrefEndOfLevelButton = Main.MelonPrefCategory.CreateEntry<bool>("Disable end of level button", false, null, null, false, false, null, null);
+            MelonPrefEndOfLevelButton = Main.MelonPrefCategory.CreateEntry("Disable end of level button", false);
 
             if (MelonPrefEndOfLevelButton != null)
             {
-                EndOfLevelButton = MelonPrefEndOfLevelButton.Value;
+                _endOfLevelButton = MelonPrefEndOfLevelButton.Value;
             }
         }
 
-        public static void BonemenuCreator()
+        public static void BoneMenuCreator()
         {
-            var DeathTimeCustomizer = Main.category.CreateCategory("Button Disabler ", Color.yellow);
+            var deathTimeCustomizer = Main.Category.CreateCategory("Button Disabler ", Color.yellow);
 
-            DeathTimeCustomizer.CreateBoolElement("Mod Toggle", Color.yellow, ButtonDisablerIsEnabled, new System.Action<bool>(OnSetEnabled));
+            deathTimeCustomizer.CreateBoolElement("Mod Toggle", Color.yellow, ButtonDisablerIsEnabled, OnSetEnabled);
 
-            DeathTimeCustomizer.CreateBoolElement("Disable Next Level Button", "#ff9900", EndOfLevelButton, new System.Action<bool>(OnEndOfLevelButtonEnabled));
+            deathTimeCustomizer.CreateBoolElement("Disable Next Level Button", "#ff9900", _endOfLevelButton, OnEndOfLevelButtonEnabled);
         }
         public static void DisableButtons()
         {
-            var objectsWithKeyword = Transform.FindObjectsOfType<Transform>(true);
+            var objectsWithKeyword = Object.FindObjectsOfType<Transform>(true);
             foreach (Transform obj in objectsWithKeyword)
             {
                 if (obj.name.Contains("FLOORS") || obj.name.Contains("LoadButtons") || obj.name.Contains("prop_bigButton") || obj.name.Contains("INTERACTION"))
@@ -48,44 +42,45 @@ namespace PowerTools.Tools
                     for (int i = 0; i < obj.childCount; i++)
                     {
                         Transform child = obj.GetChild(i);
-                        SLZ.Interaction.ButtonToggle ButtonToggle = child.GetComponent<SLZ.Interaction.ButtonToggle>();
-                        if (ButtonToggle != null && ButtonDisablerIsEnabled)
+                        SLZ.Interaction.ButtonToggle buttonToggle = child.GetComponent<SLZ.Interaction.ButtonToggle>();
+                        if (buttonToggle != null && ButtonDisablerIsEnabled)
                         {
-                            if (EndOfLevelButton)
+                            if (_endOfLevelButton)
                             {
-                                ButtonToggle.enabled = false;
+                                buttonToggle.enabled = false;
                             }
-                            else if (!EndOfLevelButton)
+                            else if (!_endOfLevelButton)
                             {
                                 if (!child.name.Contains("prop_bigButton_NEXTLEVEL"))
                                 {
-                                    ButtonToggle.enabled = false;
+                                    buttonToggle.enabled = false;
                                 }
                                 if (child.name.Contains("prop_bigButton_NEXTLEVEL"))
                                 {
-                                    ButtonToggle.enabled = true;
+                                    buttonToggle.enabled = true;
                                 }
                             }
                         }
-                        else if (ButtonToggle != null && !ButtonDisablerIsEnabled)
+                        else if (buttonToggle != null && !ButtonDisablerIsEnabled)
                         {
-                            ButtonToggle.enabled = true;
+                            buttonToggle.enabled = true;
                         }
                     }
                 }
             }
         }
 
-        public static void OnSetEnabled(bool value)
+        private static void OnSetEnabled(bool value)
         {
             ButtonDisablerIsEnabled = value;
             MelonPrefEnabled.Value = value;
             Main.MelonPrefCategory.SaveToFile(false);
             DisableButtons();
         }
-        public static void OnEndOfLevelButtonEnabled(bool value)
+
+        private static void OnEndOfLevelButtonEnabled(bool value)
         {
-            EndOfLevelButton = value;
+            _endOfLevelButton = value;
             MelonPrefEndOfLevelButton.Value = value;
             Main.MelonPrefCategory.SaveToFile(false);
             DisableButtons();
