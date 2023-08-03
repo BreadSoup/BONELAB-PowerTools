@@ -20,6 +20,7 @@ namespace PowerTools
             MelonPrefCategory = MelonPreferences.CreateCategory("Power Tools");
             DeathTimeCustomizer.MelonPreferencesCreator();
             ButtonDisabler.MelonPreferencesCreator();
+            ReloadOnDeathCustomizer.MelonPreferencesCreator();
 
 
             Category = MenuManager.CreateCategory(
@@ -37,12 +38,17 @@ namespace PowerTools
                 , Color.white);
             DeathTimeCustomizer.BoneMenuCreator();
             ButtonDisabler.BoneMenuCreator();
+            ReloadOnDeathCustomizer.BoneMenuCreator();
         }
 
         private static void OnSceneAwake()
         {
             DeathTimeCustomizer.DeathTimeSetter();
+            
             ButtonDisabler.DisableButtons();
+
+            ReloadOnDeathCustomizer.IsDefaultSet = false;
+            ReloadOnDeathCustomizer.ReloadOnDeathSetter(ReloadOnDeathCustomizer.ReloadLevel);
         }
         
         public override void OnUpdate()

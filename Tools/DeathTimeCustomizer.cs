@@ -11,6 +11,7 @@ namespace PowerTools.Tools
         private static bool DeathTimeCustomizerIsEnabled { get; set; }
         private static MelonPreferences_Entry<float> MelonPrefDeathTime { get; set; }
 
+
         public static void MelonPreferencesCreator()
         {
             MelonPrefEnabled = Main.MelonPrefCategory.CreateEntry("DeathTimeCustomizerIsEnabled", false);
