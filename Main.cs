@@ -21,6 +21,7 @@ namespace PowerTools
             DeathTimeCustomizer.MelonPreferencesCreator();
             ButtonDisabler.MelonPreferencesCreator();
             ReloadOnDeathCustomizer.MelonPreferencesCreator();
+            RagdollOnDeath.MelonPreferencesCreator();
 
 
             Category = MenuManager.CreateCategory(
@@ -39,6 +40,7 @@ namespace PowerTools
             DeathTimeCustomizer.BoneMenuCreator();
             ButtonDisabler.BoneMenuCreator();
             ReloadOnDeathCustomizer.BoneMenuCreator();
+            RagdollOnDeath.BoneMenuCreator();
         }
 
         private static void OnSceneAwake()
@@ -49,6 +51,8 @@ namespace PowerTools
 
             ReloadOnDeathCustomizer.IsDefaultSet = false;
             ReloadOnDeathCustomizer.ReloadOnDeathSetter(ReloadOnDeathCustomizer.ReloadLevel);
+            
+            RagdollOnDeath.OnSetEnabled(RagdollOnDeath.RagdollOnDeathIsEnabled);
         }
         
         public override void OnUpdate()

@@ -41,6 +41,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Tools\ButtonDisabler.cs" />
     <Compile Include="Tools\DeathTimeCustomizer.cs" />
+    <Compile Include="Tools\RagdollOnDeath.cs" />
     <Compile Include="Tools\ReloadOnDeathCustomizer.cs" />
   </ItemGroup>
   <ItemGroup>
