@@ -45,176 +45,179 @@
     <Compile Include="Tools\ReloadOnDeathCustomizer.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="PowerTools.csproj.user" />
+  </ItemGroup>
+  <ItemGroup>
     <Reference Include="0Harmony">
-      <HintPath>D:\SteamLibrary\steamapps\common\BONELAB\MelonLoader\0Harmony.dll</HintPath>
+      <HintPath>$(GameDir)\MelonLoader\0Harmony.dll</HintPath>
     </Reference>
     <Reference Include="Assembly-CSharp">
-      <HintPath>D:\SteamLibrary\steamapps\common\BONELAB\MelonLoader\Managed\Assembly-CSharp.dll</HintPath>
+      <HintPath>$(GameDir)\MelonLoader\Managed\Assembly-CSharp.dll</HintPath>
     </Reference>
     <Reference Include="Assembly-CSharp-firstpass">
-      <HintPath>D:\SteamLibrary\steamapps\common\BONELAB\MelonLoader\Managed\Assembly-CSharp-firstpass.dll</HintPath>
+      <HintPath>$(GameDir)\MelonLoader\Managed\Assembly-CSharp-firstpass.dll</HintPath>
     </Reference>
     <Reference Include="BoneLib">
-      <HintPath>D:\SteamLibrary\steamapps\common\BONELAB\Mods\BoneLib.dll</HintPath>
+      <HintPath>$(GameDir)\Mods\BoneLib.dll</HintPath>
     </Reference>
     <Reference Include="Boo.Lang">
-      <HintPath>D:\SteamLibrary\steamapps\common\BONELAB\MelonLoader\Managed\Boo.Lang.dll</HintPath>
+      <HintPath>$(GameDir)\MelonLoader\Managed\Boo.Lang.dll</HintPath>
     </Reference>
     <Reference Include="Boo.Lang.Compiler">
-      <HintPath>D:\SteamLibrary\steamapps\common\BONELAB\MelonLoader\Managed\Boo.Lang.Compiler.dll</HintPath>
+      <HintPath>$(GameDir)\MelonLoader\Managed\Boo.Lang.Compiler.dll</HintPath>
     </Reference>
     <Reference Include="Boo.Lang.Extensions">
-      <HintPath>D:\SteamLibrary\steamapps\common\BONELAB\MelonLoader\Managed\Boo.Lang.Extensions.dll</HintPath>
+      <HintPath>$(GameDir)\MelonLoader\Managed\Boo.Lang.Extensions.dll</HintPath>
     </Reference>
     <Reference Include="Boo.Lang.Parser">
-      <HintPath>D:\SteamLibrary\steamapps\common\BONELAB\MelonLoader\Managed\Boo.Lang.Parser.dll</HintPath>
+      <HintPath>$(GameDir)\MelonLoader\Managed\Boo.Lang.Parser.dll</HintPath>
     </Reference>
     <Reference Include="Boo.Lang.PatternMatching">
-      <HintPath>D:\SteamLibrary\steamapps\common\BONELAB\MelonLoader\Managed\Boo.Lang.PatternMatching.dll</HintPath>
+      <HintPath>$(GameDir)\MelonLoader\Managed\Boo.Lang.PatternMatching.dll</HintPath>
     </Reference>
     <Reference Include="Boo.Lang.Useful">
-      <HintPath>D:\SteamLibrary\steamapps\common\BONELAB\MelonLoader\Managed\Boo.Lang.Useful.dll</HintPath>
+      <HintPath>$(GameDir)\MelonLoader\Managed\Boo.Lang.Useful.dll</HintPath>
     </Reference>
     <Reference Include="ch.sycoforge.Decal">
-      <HintPath>D:\SteamLibrary\steamapps\common\BONELAB\MelonLoader\Managed\ch.sycoforge.Decal.dll</HintPath>
+      <HintPath>$(GameDir)\MelonLoader\Managed\ch.sycoforge.Decal.dll</HintPath>
     </Reference>
     <Reference Include="cscompmgd, Version=8.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>D:\SteamLibrary\steamapps\common\BONELAB\MelonLoader\Managed\cscompmgd.dll</HintPath>
+      <HintPath>$(GameDir)\MelonLoader\Managed\cscompmgd.dll</HintPath>
     </Reference>
     <Reference Include="CustomMarshalers" />
     <Reference Include="Facepunch.Steamworks.Win64">
-      <HintPath>D:\SteamLibrary\steamapps\common\BONELAB\MelonLoader\Managed\Facepunch.Steamworks.Win64.dll</HintPath>
+      <HintPath>$(GameDir)\MelonLoader\Managed\Facepunch.Steamworks.Win64.dll</HintPath>
     </Reference>
     <Reference Include="Google.Protobuf">
-      <HintPath>D:\SteamLibrary\steamapps\common\BONELAB\MelonLoader\Managed\Google.Protobuf.dll</HintPath>
+      <HintPath>$(GameDir)\MelonLoader\Managed\Google.Protobuf.dll</HintPath>
     </Reference>
     <Reference Include="Grpc.Core">
-      <HintPath>D:\SteamLibrary\steamapps\common\BONELAB\MelonLoader\Managed\Grpc.Core.dll</HintPath>
+      <HintPath>$(GameDir)\MelonLoader\Managed\Grpc.Core.dll</HintPath>
     </Reference>
     <Reference Include="HBAO.Demo.Runtime">
-      <HintPath>D:\SteamLibrary\steamapps\common\BONELAB\MelonLoader\Managed\HBAO.Demo.Runtime.dll</HintPath>
+      <HintPath>$(GameDir)\MelonLoader\Managed\HBAO.Demo.Runtime.dll</HintPath>
     </Reference>
     <Reference Include="HBAO.Demo.Universal.Runtime">
-      <HintPath>D:\SteamLibrary\steamapps\common\BONELAB\MelonLoader\Managed\HBAO.Demo.Universal.Runtime.dll</HintPath>
+      <HintPath>$(GameDir)\MelonLoader\Managed\HBAO.Demo.Universal.Runtime.dll</HintPath>
     </Reference>
     <Reference Include="HBAO.Runtime">
-      <HintPath>D:\SteamLibrary\steamapps\common\BONELAB\MelonLoader\Managed\HBAO.Runtime.dll</HintPath>
+      <HintPath>$(GameDir)\MelonLoader\Managed\HBAO.Runtime.dll</HintPath>
     </Reference>
     <Reference Include="HBAO.Universal.Runtime">
-      <HintPath>D:\SteamLibrary\steamapps\common\BONELAB\MelonLoader\Managed\HBAO.Universal.Runtime.dll</HintPath>
+      <HintPath>$(GameDir)\MelonLoader\Managed\HBAO.Universal.Runtime.dll</HintPath>
     </Reference>
     <Reference Include="I18N">
-      <HintPath>D:\SteamLibrary\steamapps\common\BONELAB\MelonLoader\Managed\I18N.dll</HintPath>
+      <HintPath>$(GameDir)\MelonLoader\Managed\I18N.dll</HintPath>
     </Reference>
     <Reference Include="I18N.CJK">
-      <HintPath>D:\SteamLibrary\steamapps\common\BONELAB\MelonLoader\Managed\I18N.CJK.dll</HintPath>
+      <HintPath>$(GameDir)\MelonLoader\Managed\I18N.CJK.dll</HintPath>
     </Reference>
     <Reference Include="I18N.MidEast">
-      <HintPath>D:\SteamLibrary\steamapps\common\BONELAB\MelonLoader\Managed\I18N.MidEast.dll</HintPath>
+      <HintPath>$(GameDir)\MelonLoader\Managed\I18N.MidEast.dll</HintPath>
     </Reference>
     <Reference Include="I18N.Other">
-      <HintPath>D:\SteamLibrary\steamapps\common\BONELAB\MelonLoader\Managed\I18N.Other.dll</HintPath>
+      <HintPath>$(GameDir)\MelonLoader\Managed\I18N.Other.dll</HintPath>
     </Reference>
     <Reference Include="I18N.Rare">
-      <HintPath>D:\SteamLibrary\steamapps\common\BONELAB\MelonLoader\Managed\I18N.Rare.dll</HintPath>
+      <HintPath>$(GameDir)\MelonLoader\Managed\I18N.Rare.dll</HintPath>
     </Reference>
     <Reference Include="I18N.West">
-      <HintPath>D:\SteamLibrary\steamapps\common\BONELAB\MelonLoader\Managed\I18N.West.dll</HintPath>
+      <HintPath>$(GameDir)\MelonLoader\Managed\I18N.West.dll</HintPath>
     </Reference>
     <Reference Include="IBM.Data.DB2">
-      <HintPath>D:\SteamLibrary\steamapps\common\BONELAB\MelonLoader\Managed\IBM.Data.DB2.dll</HintPath>
+      <HintPath>$(GameDir)\MelonLoader\Managed\IBM.Data.DB2.dll</HintPath>
     </Reference>
     <Reference Include="Iced">
-      <HintPath>D:\SteamLibrary\steamapps\common\BONELAB\MelonLoader\Managed\Iced.dll</HintPath>
+      <HintPath>$(GameDir)\MelonLoader\Managed\Iced.dll</HintPath>
     </Reference>
     <Reference Include="Il2CppMicrosoft.MixedReality.OpenXR">
-      <HintPath>D:\SteamLibrary\steamapps\common\BONELAB\MelonLoader\Managed\Il2CppMicrosoft.MixedReality.OpenXR.dll</HintPath>
+      <HintPath>$(GameDir)\MelonLoader\Managed\Il2CppMicrosoft.MixedReality.OpenXR.dll</HintPath>
     </Reference>
     <Reference Include="Il2CppMono.Security">
-      <HintPath>D:\SteamLibrary\steamapps\common\BONELAB\MelonLoader\Managed\Il2CppMono.Security.dll</HintPath>
+      <HintPath>$(GameDir)\MelonLoader\Managed\Il2CppMono.Security.dll</HintPath>
     </Reference>
     <Reference Include="Il2Cppmscorlib">
-      <HintPath>D:\SteamLibrary\steamapps\common\BONELAB\MelonLoader\Managed\Il2Cppmscorlib.dll</HintPath>
+      <HintPath>$(GameDir)\MelonLoader\Managed\Il2Cppmscorlib.dll</HintPath>
     </Reference>
     <Reference Include="Il2CppNewtonsoft.Json">
-      <HintPath>D:\SteamLibrary\steamapps\common\BONELAB\MelonLoader\Managed\Il2CppNewtonsoft.Json.dll</HintPath>
+      <HintPath>$(GameDir)\MelonLoader\Managed\Il2CppNewtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="Il2CppSystem">
-      <HintPath>D:\SteamLibrary\steamapps\common\BONELAB\MelonLoader\Managed\Il2CppSystem.dll</HintPath>
+      <HintPath>$(GameDir)\MelonLoader\Managed\Il2CppSystem.dll</HintPath>
     </Reference>
     <Reference Include="Il2CppSystem.Configuration">
-      <HintPath>D:\SteamLibrary\steamapps\common\BONELAB\MelonLoader\Managed\Il2CppSystem.Configuration.dll</HintPath>
+      <HintPath>$(GameDir)\MelonLoader\Managed\Il2CppSystem.Configuration.dll</HintPath>
     </Reference>
     <Reference Include="Il2CppSystem.Core">
-      <HintPath>D:\SteamLibrary\steamapps\common\BONELAB\MelonLoader\Managed\Il2CppSystem.Core.dll</HintPath>
+      <HintPath>$(GameDir)\MelonLoader\Managed\Il2CppSystem.Core.dll</HintPath>
     </Reference>
     <Reference Include="Il2CppSystem.Data">
-      <HintPath>D:\SteamLibrary\steamapps\common\BONELAB\MelonLoader\Managed\Il2CppSystem.Data.dll</HintPath>
+      <HintPath>$(GameDir)\MelonLoader\Managed\Il2CppSystem.Data.dll</HintPath>
     </Reference>
     <Reference Include="Il2CppSystem.IO.Compression">
-      <HintPath>D:\SteamLibrary\steamapps\common\BONELAB\MelonLoader\Managed\Il2CppSystem.IO.Compression.dll</HintPath>
+      <HintPath>$(GameDir)\MelonLoader\Managed\Il2CppSystem.IO.Compression.dll</HintPath>
     </Reference>
     <Reference Include="Il2CppSystem.IO.Compression.FileSystem">
-      <HintPath>D:\SteamLibrary\steamapps\common\BONELAB\MelonLoader\Managed\Il2CppSystem.IO.Compression.FileSystem.dll</HintPath>
+      <HintPath>$(GameDir)\MelonLoader\Managed\Il2CppSystem.IO.Compression.FileSystem.dll</HintPath>
     </Reference>
     <Reference Include="Il2CppSystem.Numerics">
-      <HintPath>D:\SteamLibrary\steamapps\common\BONELAB\MelonLoader\Managed\Il2CppSystem.Numerics.dll</HintPath>
+      <HintPath>$(GameDir)\MelonLoader\Managed\Il2CppSystem.Numerics.dll</HintPath>
     </Reference>
     <Reference Include="Il2CppSystem.Runtime.Serialization">
-      <HintPath>D:\SteamLibrary\steamapps\common\BONELAB\MelonLoader\Managed\Il2CppSystem.Runtime.Serialization.dll</HintPath>
+      <HintPath>$(GameDir)\MelonLoader\Managed\Il2CppSystem.Runtime.Serialization.dll</HintPath>
     </Reference>
     <Reference Include="Il2CppSystem.ServiceModel.Internals">
-      <HintPath>D:\SteamLibrary\steamapps\common\BONELAB\MelonLoader\Managed\Il2CppSystem.ServiceModel.Internals.dll</HintPath>
+      <HintPath>$(GameDir)\MelonLoader\Managed\Il2CppSystem.ServiceModel.Internals.dll</HintPath>
     </Reference>
     <Reference Include="Il2CppSystem.Xml">
-      <HintPath>D:\SteamLibrary\steamapps\common\BONELAB\MelonLoader\Managed\Il2CppSystem.Xml.dll</HintPath>
+      <HintPath>$(GameDir)\MelonLoader\Managed\Il2CppSystem.Xml.dll</HintPath>
     </Reference>
     <Reference Include="Il2CppSystem.Xml.Linq">
-      <HintPath>D:\SteamLibrary\steamapps\common\BONELAB\MelonLoader\Managed\Il2CppSystem.Xml.Linq.dll</HintPath>
+      <HintPath>$(GameDir)\MelonLoader\Managed\Il2CppSystem.Xml.Linq.dll</HintPath>
     </Reference>
     <Reference Include="MelonLoader">
-      <HintPath>D:\SteamLibrary\steamapps\common\BONELAB\MelonLoader\MelonLoader.dll</HintPath>
+      <HintPath>$(GameDir)\MelonLoader\MelonLoader.dll</HintPath>
     </Reference>
     <Reference Include="MeshBakerCore">
-      <HintPath>D:\SteamLibrary\steamapps\common\BONELAB\MelonLoader\Managed\MeshBakerCore.dll</HintPath>
+      <HintPath>$(GameDir)\MelonLoader\Managed\MeshBakerCore.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Microsoft.Web.Infrastructure">
-      <HintPath>D:\SteamLibrary\steamapps\common\BONELAB\MelonLoader\Managed\Microsoft.Web.Infrastructure.dll</HintPath>
+      <HintPath>$(GameDir)\MelonLoader\Managed\Microsoft.Web.Infrastructure.dll</HintPath>
     </Reference>
     <Reference Include="Mono.CompilerServices.SymbolWriter">
-      <HintPath>D:\SteamLibrary\steamapps\common\BONELAB\MelonLoader\Managed\Mono.CompilerServices.SymbolWriter.dll</HintPath>
+      <HintPath>$(GameDir)\MelonLoader\Managed\Mono.CompilerServices.SymbolWriter.dll</HintPath>
     </Reference>
     <Reference Include="Mono.CSharp">
-      <HintPath>D:\SteamLibrary\steamapps\common\BONELAB\MelonLoader\Managed\Mono.CSharp.dll</HintPath>
+      <HintPath>$(GameDir)\MelonLoader\Managed\Mono.CSharp.dll</HintPath>
     </Reference>
     <Reference Include="Mono.Data.Sqlite">
-      <HintPath>D:\SteamLibrary\steamapps\common\BONELAB\MelonLoader\Managed\Mono.Data.Sqlite.dll</HintPath>
+      <HintPath>$(GameDir)\MelonLoader\Managed\Mono.Data.Sqlite.dll</HintPath>
     </Reference>
     <Reference Include="Mono.Data.Tds">
-      <HintPath>D:\SteamLibrary\steamapps\common\BONELAB\MelonLoader\Managed\Mono.Data.Tds.dll</HintPath>
+      <HintPath>$(GameDir)\MelonLoader\Managed\Mono.Data.Tds.dll</HintPath>
     </Reference>
     <Reference Include="Mono.Messaging">
-      <HintPath>D:\SteamLibrary\steamapps\common\BONELAB\MelonLoader\Managed\Mono.Messaging.dll</HintPath>
+      <HintPath>$(GameDir)\MelonLoader\Managed\Mono.Messaging.dll</HintPath>
     </Reference>
     <Reference Include="Mono.Posix">
-      <HintPath>D:\SteamLibrary\steamapps\common\BONELAB\MelonLoader\Managed\Mono.Posix.dll</HintPath>
+      <HintPath>$(GameDir)\MelonLoader\Managed\Mono.Posix.dll</HintPath>
     </Reference>
     <Reference Include="Mono.Security">
-      <HintPath>D:\SteamLibrary\steamapps\common\BONELAB\MelonLoader\Managed\Mono.Security.dll</HintPath>
+      <HintPath>$(GameDir)\MelonLoader\Managed\Mono.Security.dll</HintPath>
     </Reference>
     <Reference Include="Mono.WebBrowser">
-      <HintPath>D:\SteamLibrary\steamapps\common\BONELAB\MelonLoader\Managed\Mono.WebBrowser.dll</HintPath>
+      <HintPath>$(GameDir)\MelonLoader\Managed\Mono.WebBrowser.dll</HintPath>
     </Reference>
     <Reference Include="SLZ.Marrow">
-      <HintPath>D:\SteamLibrary\steamapps\common\BONELAB\MelonLoader\Managed\SLZ.Marrow.dll</HintPath>
+      <HintPath>$(GameDir)\MelonLoader\Managed\SLZ.Marrow.dll</HintPath>
     </Reference>
     <Reference Include="UnhollowerBaseLib">
-      <HintPath>D:\SteamLibrary\steamapps\common\BONELAB\MelonLoader\Managed\UnhollowerBaseLib.dll</HintPath>
+      <HintPath>$(GameDir)\MelonLoader\Managed\UnhollowerBaseLib.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.CoreModule">
-      <HintPath>D:\SteamLibrary\steamapps\common\BONELAB\MelonLoader\Managed\UnityEngine.CoreModule.dll</HintPath>
+      <HintPath>$(GameDir)\MelonLoader\Managed\UnityEngine.CoreModule.dll</HintPath>
     </Reference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
