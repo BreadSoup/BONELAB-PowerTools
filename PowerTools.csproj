@@ -43,6 +43,7 @@
     <Compile Include="Tools\DeathTimeCustomizer.cs" />
     <Compile Include="Tools\RagdollOnDeath.cs" />
     <Compile Include="Tools\ReloadOnDeathCustomizer.cs" />
+    <Compile Include="Tools\VaultingToggle.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="PowerTools.csproj.user" />

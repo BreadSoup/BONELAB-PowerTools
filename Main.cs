@@ -19,9 +19,10 @@ namespace PowerTools
             Hooking.OnLevelInitialized += (_) => { OnSceneAwake(); };
             MelonPrefCategory = MelonPreferences.CreateCategory("Power Tools");
             DeathTimeCustomizer.MelonPreferencesCreator();
-            ButtonDisabler.MelonPreferencesCreator();
             ReloadOnDeathCustomizer.MelonPreferencesCreator();
+            ButtonDisabler.MelonPreferencesCreator();
             RagdollOnDeath.MelonPreferencesCreator();
+            VaultingToggle.MelonPreferencesCreator();
 
 
             Category = MenuManager.CreateCategory(
@@ -38,9 +39,10 @@ namespace PowerTools
                 "<color=#00FFD4>s</color>"
                 , Color.white);
             DeathTimeCustomizer.BoneMenuCreator();
-            ButtonDisabler.BoneMenuCreator();
             ReloadOnDeathCustomizer.BoneMenuCreator();
+            ButtonDisabler.BoneMenuCreator();
             RagdollOnDeath.BoneMenuCreator();
+            VaultingToggle.BoneMenuCreator();
         }
 
         private static void OnSceneAwake()
