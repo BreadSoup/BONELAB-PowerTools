@@ -55,11 +55,12 @@ namespace PowerTools
             ReloadOnDeathCustomizer.ReloadOnDeathSetter(ReloadOnDeathCustomizer.ReloadLevel);
             
             RagdollOnDeath.OnSetEnabled(RagdollOnDeath.RagdollOnDeathIsEnabled);
+            
         }
         
         public override void OnUpdate()
         {
-
+            //BugoSpray.BugoRemover();
         }
 
 
