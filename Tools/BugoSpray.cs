@@ -1,6 +1,4 @@
-﻿using MelonLoader;
-using UnityEngine;
-using System.Collections.Generic;
+﻿using UnityEngine;
 using TMPro;
 
 namespace PowerTools.Tools
@@ -11,14 +9,6 @@ namespace PowerTools.Tools
         {
             TextMeshProUGUI[] textMeshProUGUIComponents = Object.FindObjectsOfType<TextMeshProUGUI>();
             TextMeshPro[] textMeshProComponents = Object.FindObjectsOfType<TextMeshPro>();
-
-            // List of strings to check for
-            List<string> stringsToCheck = new List<string>
-            {
-                "BugoBug",
-                "Budostayheadonarm",
-                "Bugazzz06"
-            };
 
             // Iterate through TextMeshProUGUI components
             foreach (TextMeshProUGUI tmpText in textMeshProUGUIComponents)
@@ -43,7 +33,7 @@ namespace PowerTools.Tools
                     if (the.text.Contains("BugoBug") || the.text.Contains("Budostayheadonarm") || the.text.Contains("Bugazzz06"))
                     {
                         the.text = the.text.Replace(the.text, "BreadSoup");
-                        if (the.gameObject.active == true)
+                        if (the.gameObject.active)
                         {
                             the.gameObject.SetActive(false);
                             the.gameObject.SetActive(true);

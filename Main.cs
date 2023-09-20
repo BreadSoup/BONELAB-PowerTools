@@ -56,6 +56,10 @@ namespace PowerTools
             
             RagdollOnDeath.OnSetEnabled(RagdollOnDeath.RagdollOnDeathIsEnabled);
             
+            Loadouts.SlotFinder();
+            //Loadouts.LoadoutSetter();
+            Loadouts.SpawnNimbusGun();
+
         }
         
         public override void OnUpdate()

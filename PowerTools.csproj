@@ -42,6 +42,7 @@
     <Compile Include="Tools\BugoSpray.cs" />
     <Compile Include="Tools\ButtonDisabler.cs" />
     <Compile Include="Tools\DeathTimeCustomizer.cs" />
+    <Compile Include="Tools\Loadouts.cs" />
     <Compile Include="Tools\RagdollOnDeath.cs" />
     <Compile Include="Tools\ReloadOnDeathCustomizer.cs" />
     <Compile Include="Tools\VaultingToggle.cs" />
