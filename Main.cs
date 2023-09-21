@@ -43,6 +43,7 @@ namespace PowerTools
             ButtonDisabler.BoneMenuCreator();
             RagdollOnDeath.BoneMenuCreator();
             VaultingToggle.BoneMenuCreator();
+            Loadouts.BoneMenuCreator();
         }
 
         private static void OnSceneAwake()
@@ -56,9 +57,9 @@ namespace PowerTools
             
             RagdollOnDeath.OnSetEnabled(RagdollOnDeath.RagdollOnDeathIsEnabled);
             
-            Loadouts.SlotFinder();
+            //Loadouts.SlotFinder();
             //Loadouts.LoadoutSetter();
-            Loadouts.SpawnNimbusGun();
+            
 
         }
         

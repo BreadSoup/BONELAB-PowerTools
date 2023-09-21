@@ -12,57 +12,73 @@ namespace PowerTools.Tools
 {
     public static class Loadouts
     {
-        private static GameObject _slotsParent;
-        private static Transform _slots;
-        private static GameObject _nimbus;
+        public static string HeadSlot;
+        public static string BackLeftSlot;
+        public static string BackRightSlot;
+        public static string LeftHandSlot;
+        public static string RightHandSlot;
+        public static string Hipslot;
 
+        private const string HeadSlotPath = "[PhysicsRig]/Head/HeadSlotContainer/WeaponReciever_01";
+        private const string BackLeftSlotPath = "[PhysicsRig]/Chest/BackLf/ItemReciever";
+        private const string BackRightSlotPath = "[PhysicsRig]/Chest/BackRt/ItemReciever";
+        private const string LeftHandSlotPath = "[PhysicsRig]/Spine/SideLf/prop_handGunHolster/ItemReciever";
+        private const string RightHandSlotPath = "[PhysicsRig]/Spine/SideRt/prop_handGunHolster/ItemReciever";
+        private const string HipslotPath = "[PhysicsRig]/Spine/BackCt/ItemReciever";
 
-        public static void SlotFinder()
+        public static void BoneMenuCreator()
         {
-             _slotsParent = GameObject.Find("INVENTORYSLOTS");
-             if (_slotsParent != null)
-             {
-                 _slots = _slotsParent.transform.Find("scaleOffset");
-             }
+            var loadouts = Main.Category.CreateCategory("Loadouts", "#00fc82");
+            loadouts.CreateFunctionElement("Save Current Loadout", Color.green, delegate ()
+            {
+                SaveLoadout();
+            }); 
+            
+            loadouts.CreateFunctionElement("Apply Test Loadout", Color.cyan, delegate ()
+            {
+                SpawnNimbusGun(HeadSlot, HeadSlotPath);
+                SpawnNimbusGun(BackLeftSlot, BackLeftSlotPath);
+                SpawnNimbusGun(BackRightSlot, BackRightSlotPath);
+                SpawnNimbusGun(LeftHandSlot, LeftHandSlotPath);
+                SpawnNimbusGun(RightHandSlot, RightHandSlotPath);
+                SpawnNimbusGun(Hipslot, HipslotPath);
+                
+            }); 
+           
         }
 
-        /* public static void LoadoutSetter()
+        private static void SaveLoadout()
         {
-            if (_slots != null)
+            var headSlot = GameObject.Find(HeadSlotPath);
+            var backLeftSlot = GameObject.Find(BackLeftSlotPath);
+            var backRightSlot = GameObject.Find(BackRightSlotPath);
+            var leftHandSlot = GameObject.Find(LeftHandSlotPath);
+            var rightHandSlot = GameObject.Find(RightHandSlotPath);
+            var hipSlot = GameObject.Find(HipslotPath);
+            
+            
+            GetBarcode(headSlot, ref HeadSlot);
+            GetBarcode(backLeftSlot, ref BackLeftSlot);
+            GetBarcode(backRightSlot, ref BackRightSlot);
+            GetBarcode(leftHandSlot, ref LeftHandSlot);
+            GetBarcode(rightHandSlot, ref RightHandSlot);
+            GetBarcode(hipSlot, ref Hipslot);
+        }
+        
+        private static void GetBarcode(GameObject slotVar , ref string slot)
+        {
+            if (slotVar.transform.childCount > 0)
             {
-                //this isn't confusing at all!
-
-                GameObject HeadSlot = GameObject.Find("/[RigManager (Blank)]/[PhysicsRig]/Head/HeadSlotContainer/WeaponReciever_01");
-                GameObject BackLeftSlot = GameObject.Find("/[PhysicsRig]/Chest/BackLf/ItemReciever");
-                /*var slot3 = _slots.transform.GetChild(2).gameObject;
-                var slot4 = _slots.transform.GetChild(3).gameObject;
-                var slot6 = _slots.transform.GetChild(5).gameObject;*//*
-
-                SpawnNimbusGun();
-                
-                if (_nimbus != null)
-                {
-                    MelonLogger.Msg(_nimbus.name);
-                    InteractableHost nimbusHost = _nimbus.GetComponent<InteractableHost>();
-                    BackLeftSlot.GetComponent<InventorySlotReceiver>().InsertInSlot(nimbusHost);
-                }
-                else
-                {
-                    MelonLogger.Msg(":(");
-                }
+                slot = slotVar.GetComponentInChildren<AssetPoolee>().spawnableCrate._barcode._id;
             }
-
-
-        }*/
-    
-
-        internal static void SpawnNimbusGun()
+        }
+        
+        internal static void SpawnNimbusGun(string barcodeValue, string slotPath)
         {
-            var backLeftSlot = GameObject.Find("[PhysicsRig]/Chest/BackLf/ItemReciever");
+            var slot = GameObject.Find(slotPath);
             var head = Player.playerHead.transform;
-
-            const string barcode = "c1534c5a-6b38-438a-a324-d7e147616467";
-            var reference = new SpawnableCrateReference(barcode);
+            
+            var reference = new SpawnableCrateReference(barcodeValue);
 
             var spawnable = new Spawnable()
             {
@@ -76,22 +92,9 @@ namespace PowerTools.Tools
 
             void Action(GameObject go)
             {
-                if (backLeftSlot == null)
-                {
-                    MelonLogger.Msg("BackLeftSlot is null");
-                }
-                else
-                {
-                    if (go == null)
-                    {
-                        MelonLogger.Msg("go is null");
-                    }
-                    else
-                    {
-                        MelonLogger.Msg("Loaded object in holster with barcode ");
-                        backLeftSlot.GetComponent<InventorySlotReceiver>().InsertInSlot(go.GetComponent<InteractableHost>());
-                    }
-                }
+                MelonLogger.Msg("Loaded object in holster with barcode ");
+                slot.GetComponent<InventorySlotReceiver>().InsertInSlot(go.GetComponent<InteractableHost>());
+                    
             }
         }
     }
