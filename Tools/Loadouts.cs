@@ -1,5 +1,6 @@
 ﻿using System;
 using BoneLib;
+using BoneLib.BoneMenu.Elements;
 using BoneLib.Nullables;
 using MelonLoader;
 using SLZ.Interaction;
@@ -12,12 +13,14 @@ namespace PowerTools.Tools
 {
     public static class Loadouts
     {
-        public static string HeadSlot;
-        public static string BackLeftSlot;
-        public static string BackRightSlot;
-        public static string LeftHandSlot;
-        public static string RightHandSlot;
-        public static string Hipslot;
+        private static MenuCategory _loadouts;
+        
+        private static string _headSlot;
+        private static string _backLeftSlot;
+        private static string _backRightSlot;
+        private static string _leftHandSlot;
+        private static string _rightHandSlot;
+        private static string _hipslot;
 
         private const string HeadSlotPath = "[PhysicsRig]/Head/HeadSlotContainer/WeaponReciever_01";
         private const string BackLeftSlotPath = "[PhysicsRig]/Chest/BackLf/ItemReciever";
@@ -28,24 +31,24 @@ namespace PowerTools.Tools
 
         public static void BoneMenuCreator()
         {
-            var loadouts = Main.Category.CreateCategory("Loadouts", "#00fc82");
-            loadouts.CreateFunctionElement("Save Current Loadout", Color.green, delegate ()
-            {
-                SaveLoadout();
-            }); 
+            _loadouts = Main.Category.CreateCategory("Loadouts", "#00fc82");
+            _loadouts.CreateFunctionElement("Save Current Loadout", Color.green, SaveLoadout); 
             
-            loadouts.CreateFunctionElement("Apply Test Loadout", Color.cyan, delegate ()
+            _loadouts.CreateFunctionElement("Apply Test Loadout", Color.cyan, delegate
             {
-                SpawnNimbusGun(HeadSlot, HeadSlotPath);
-                SpawnNimbusGun(BackLeftSlot, BackLeftSlotPath);
-                SpawnNimbusGun(BackRightSlot, BackRightSlotPath);
-                SpawnNimbusGun(LeftHandSlot, LeftHandSlotPath);
-                SpawnNimbusGun(RightHandSlot, RightHandSlotPath);
-                SpawnNimbusGun(Hipslot, HipslotPath);
+                SpawnLoadout(_headSlot, HeadSlotPath);
+                SpawnLoadout(_backLeftSlot, BackLeftSlotPath);
+                SpawnLoadout(_backRightSlot, BackRightSlotPath);
+                SpawnLoadout(_leftHandSlot, LeftHandSlotPath);
+                SpawnLoadout(_rightHandSlot, RightHandSlotPath);
+                SpawnLoadout(_hipslot, HipslotPath);
                 
             }); 
            
         }
+
+        private static int _loadoutNumber = 1;
+        
 
         private static void SaveLoadout()
         {
@@ -57,12 +60,40 @@ namespace PowerTools.Tools
             var hipSlot = GameObject.Find(HipslotPath);
             
             
-            GetBarcode(headSlot, ref HeadSlot);
-            GetBarcode(backLeftSlot, ref BackLeftSlot);
-            GetBarcode(backRightSlot, ref BackRightSlot);
-            GetBarcode(leftHandSlot, ref LeftHandSlot);
-            GetBarcode(rightHandSlot, ref RightHandSlot);
-            GetBarcode(hipSlot, ref Hipslot);
+            GetBarcode(headSlot, ref _headSlot);
+            GetBarcode(backLeftSlot, ref _backLeftSlot);
+            GetBarcode(backRightSlot, ref _backRightSlot);
+            GetBarcode(leftHandSlot, ref _leftHandSlot);
+            GetBarcode(rightHandSlot, ref _rightHandSlot);
+            GetBarcode(hipSlot, ref _hipslot);
+            
+            BoneMenuLoadoutCreator();
+        }
+        
+        private static void BoneMenuLoadoutCreator()
+        {
+            var headSlotLoadout = _headSlot;
+            var backLeftSlotLoadout = _backLeftSlot;
+            var backRightSlotLoadout = _backRightSlot;
+            var leftHandSlotLoadout = _leftHandSlot;
+            var rightHandSlotLoadout = _rightHandSlot;
+            var hipslotLoadout = _hipslot;
+            _loadoutNumber++;
+            var loadout = _loadouts.CreateCategory("Loadout " + _loadoutNumber, Color.cyan);
+            
+            loadout.CreateFunctionElement("Apply Loadout", Color.green, delegate
+            {
+                SpawnLoadout(headSlotLoadout, HeadSlotPath);
+                SpawnLoadout(backLeftSlotLoadout, BackLeftSlotPath);
+                SpawnLoadout(backRightSlotLoadout, BackRightSlotPath);
+                SpawnLoadout(leftHandSlotLoadout, LeftHandSlotPath);
+                SpawnLoadout(rightHandSlotLoadout, RightHandSlotPath);
+                SpawnLoadout(hipslotLoadout, HipslotPath);
+            });
+            /*Loadout.CreateFunctionElement("Delete", Color.red, delegate
+            {
+                _loadouts.RemoveElement(Loadout);
+            });*/
         }
         
         private static void GetBarcode(GameObject slotVar , ref string slot)
@@ -72,8 +103,8 @@ namespace PowerTools.Tools
                 slot = slotVar.GetComponentInChildren<AssetPoolee>().spawnableCrate._barcode._id;
             }
         }
-        
-        internal static void SpawnNimbusGun(string barcodeValue, string slotPath)
+
+        private static void SpawnLoadout(string barcodeValue, string slotPath)
         {
             var slot = GameObject.Find(slotPath);
             var head = Player.playerHead.transform;

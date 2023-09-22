@@ -27,11 +27,11 @@ namespace PowerTools.Tools
             vaultingToggle.CreateBoolElement("Vaulting", "#6d45ff", VaultingToggleIsEnabled, OnSetEnabled);
         }
         
-        public static bool Prefix(PhysicsRig __instance, ref bool __result)
+        public static bool Prefix(PhysicsRig __instance, ref bool result) // DO NOT CHANGE __instance TO ANYTHING ELSE
         {
             if(!VaultingToggleIsEnabled)
             {
-                __result = false;
+                result = false;
                 return false;
             }
             else
