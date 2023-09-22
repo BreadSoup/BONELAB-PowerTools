@@ -32,19 +32,7 @@ namespace PowerTools.Tools
         public static void BoneMenuCreator()
         {
             _loadouts = Main.Category.CreateCategory("Loadouts", "#00fc82");
-            _loadouts.CreateFunctionElement("Save Current Loadout", Color.green, SaveLoadout); 
-            
-            _loadouts.CreateFunctionElement("Apply Test Loadout", Color.cyan, delegate
-            {
-                SpawnLoadout(_headSlot, HeadSlotPath);
-                SpawnLoadout(_backLeftSlot, BackLeftSlotPath);
-                SpawnLoadout(_backRightSlot, BackRightSlotPath);
-                SpawnLoadout(_leftHandSlot, LeftHandSlotPath);
-                SpawnLoadout(_rightHandSlot, RightHandSlotPath);
-                SpawnLoadout(_hipslot, HipslotPath);
-                
-            }); 
-           
+            _loadouts.CreateFunctionElement("Save Current Loadout", Color.green, SaveLoadout);
         }
 
         private static int _loadoutNumber = 1;
