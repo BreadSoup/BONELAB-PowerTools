@@ -21,6 +21,13 @@ namespace PowerTools.Tools
         private static string _leftHandSlot;
         private static string _rightHandSlot;
         private static string _hipslot;
+        
+        private static string _headSlotName;
+        private static string _backLeftSlotName;
+        private static string _backRightSlotName;
+        private static string _leftHandSlotName;
+        private static string _rightHandSlotName;
+        private static string _hipSlotName;
 
         private const string HeadSlotPath = "[PhysicsRig]/Head/HeadSlotContainer/WeaponReciever_01";
         private const string BackLeftSlotPath = "[PhysicsRig]/Chest/BackLf/ItemReciever";
@@ -35,9 +42,8 @@ namespace PowerTools.Tools
             _loadouts.CreateFunctionElement("Save Current Loadout", Color.green, SaveLoadout);
         }
 
-        private static int _loadoutNumber = 1;
+        private static int _loadoutNumber;
         
-
         private static void SaveLoadout()
         {
             var headSlot = GameObject.Find(HeadSlotPath);
@@ -48,14 +54,16 @@ namespace PowerTools.Tools
             var hipSlot = GameObject.Find(HipslotPath);
             
             
-            GetBarcode(headSlot, ref _headSlot);
-            GetBarcode(backLeftSlot, ref _backLeftSlot);
-            GetBarcode(backRightSlot, ref _backRightSlot);
-            GetBarcode(leftHandSlot, ref _leftHandSlot);
-            GetBarcode(rightHandSlot, ref _rightHandSlot);
-            GetBarcode(hipSlot, ref _hipslot);
+            
+            GetBarcode(headSlot, ref _headSlot, ref _headSlotName);
+            GetBarcode(backLeftSlot, ref _backLeftSlot, ref _backLeftSlotName);
+            GetBarcode(backRightSlot, ref _backRightSlot, ref _backRightSlotName);
+            GetBarcode(leftHandSlot, ref _leftHandSlot, ref _leftHandSlotName);
+            GetBarcode(rightHandSlot, ref _rightHandSlot, ref _rightHandSlotName);
+            GetBarcode(hipSlot, ref _hipslot, ref _hipSlotName);
             
             BoneMenuLoadoutCreator();
+            
         }
         
         private static void BoneMenuLoadoutCreator()
@@ -82,13 +90,28 @@ namespace PowerTools.Tools
             {
                 _loadouts.RemoveElement(Loadout);
             });*/
+            
+            
+            BoneMenuNameButtonCreator( "Head slot: ", _headSlotName, loadout);
+            BoneMenuNameButtonCreator("Back left slot: ", _backLeftSlotName, loadout);
+            BoneMenuNameButtonCreator("Back right slot: ", _backRightSlotName, loadout);
+            BoneMenuNameButtonCreator("Left handgun slot: ", _leftHandSlotName, loadout);
+            BoneMenuNameButtonCreator("Right handgun slot: ", _rightHandSlotName, loadout);
+            BoneMenuNameButtonCreator("Hip slot: ", _hipSlotName, loadout);
+
         }
         
-        private static void GetBarcode(GameObject slotVar , ref string slot)
+        private static void GetBarcode(GameObject slotVar , ref string slot, ref string name)
         {
             if (slotVar.transform.childCount > 0)
             {
                 slot = slotVar.GetComponentInChildren<AssetPoolee>().spawnableCrate._barcode._id;
+                name = slotVar.GetComponentInChildren<AssetPoolee>().spawnableCrate.name;
+            }
+            else
+            {
+                name = null;
+                slot = null;
             }
         }
 
@@ -114,6 +137,14 @@ namespace PowerTools.Tools
                 MelonLogger.Msg("Loaded object in holster with barcode ");
                 slot.GetComponent<InventorySlotReceiver>().InsertInSlot(go.GetComponent<InteractableHost>());
                     
+            }
+        }
+
+        private static void BoneMenuNameButtonCreator(string info, string name, MenuCategory loadout)
+        {
+            if (name != null)
+            {
+                loadout.CreateFunctionElement(info + name, Color.white, delegate{});
             }
         }
     }
