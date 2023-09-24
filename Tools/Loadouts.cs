@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.IO;
+using System.Linq;
 using BoneLib;
 using BoneLib.BoneMenu;
 using BoneLib.BoneMenu.Elements;
@@ -13,6 +14,7 @@ using SLZ.Marrow.Data;
 using SLZ.Marrow.Pool;
 using SLZ.Marrow.Warehouse;
 using SLZ.Props.Weapons;
+using SLZ.Rig;
 using UnityEngine;
 using Object = Il2CppSystem.Object;
 
@@ -21,16 +23,17 @@ namespace PowerTools.Tools
     public static class Loadouts
     {
         private static MenuCategory _loadouts;
-        
-        private static readonly string UserDataPath = MelonUtils.UserDataDirectory;
-        
+
+        private static readonly string LoadoutPath = Path.Combine(Main.PowerToolsPath, "Loadouts");
+
+
         private static string _headSlot;
         private static string _backLeftSlot;
         private static string _backRightSlot;
         private static string _leftHandSlot;
         private static string _rightHandSlot;
         private static string _hipslot;
-        
+
         private static string _headSlotName;
         private static string _backLeftSlotName;
         private static string _backRightSlotName;
@@ -50,6 +53,56 @@ namespace PowerTools.Tools
         {
             _loadouts = Main.Category.CreateCategory("Loadouts", "#00fc82");
             _loadouts.CreateFunctionElement("Save Current Loadout", Color.green, SaveLoadout);
+
+            // Loading loadouts. This is very basic and idiotic and should probably be redone if you want.
+            string[] files = Directory.GetFiles(LoadoutPath);
+            if (files.Length > 0)
+            {
+                foreach (string file in files)
+                {
+                    string[] data = File.ReadAllLines(file);
+
+                    var loadout = _loadouts.CreateCategory(data[0], Color.cyan);
+
+                    loadout.CreateFunctionElement("Apply Loadout", Color.green, delegate
+                    {
+                        if (data[1] != "")
+                            SpawnLoadout(data[1], HeadSlotPath);
+                        if (data[2] != "")
+                            SpawnLoadout(data[2], BackLeftSlotPath);
+                        if (data[3] != "")
+                            SpawnLoadout(data[3], BackRightSlotPath);
+                        if (data[4] != "")
+                            SpawnLoadout(data[4], LeftHandSlotPath);
+                        if (data[5] != "")
+                            SpawnLoadout(data[5], RightHandSlotPath);
+                        if (data[6] != "")
+                            SpawnLoadout(data[6], HipslotPath);
+                    });
+
+                    Color betterRed = new Color(0.9607843f, 0.258823543f, 0.258823543f);
+                    loadout.CreateFunctionElement("Delete Loadout", betterRed, delegate
+                    {
+                        _loadouts.Elements.Remove(loadout);
+                        File.Delete(Path.Combine(LoadoutPath, loadout.Name + ".txt"));
+                        MenuManager.SelectCategory(_loadouts);
+
+                    }, "Are you sure?");
+
+                    if (data[7] != "")
+                        BoneMenuNameButtonCreator("Head slot: ", data[7], loadout);
+                    if (data[8] != "")
+                        BoneMenuNameButtonCreator("Back left slot: ", data[8], loadout);
+                    if (data[9] != "")
+                        BoneMenuNameButtonCreator("Back right slot: ", data[9], loadout);
+                    if (data[10] != "")
+                        BoneMenuNameButtonCreator("Left handgun slot: ", data[10], loadout);
+                    if (data[11] != "")
+                        BoneMenuNameButtonCreator("Right handgun slot: ", data[11], loadout);
+                    if (data[12] != "")
+                        BoneMenuNameButtonCreator("Hip slot: ", data[12], loadout);
+                }
+            }
         }
 
         private static int _loadoutNumber;
@@ -78,14 +131,27 @@ namespace PowerTools.Tools
         
         private static void BoneMenuLoadoutCreator()
         {
-            Directory.CreateDirectory("UserData/Loadouts");
+            if (!Directory.Exists(LoadoutPath))
+                Directory.CreateDirectory(LoadoutPath);
+
             var headSlotLoadout = _headSlot;
             var backLeftSlotLoadout = _backLeftSlot;
             var backRightSlotLoadout = _backRightSlot;
             var leftHandSlotLoadout = _leftHandSlot;
             var rightHandSlotLoadout = _rightHandSlot;
             var hipslotLoadout = _hipslot;
-            _loadoutNumber++;
+
+            // Making sure that _loadoutNumber is always above the file with the max _loadoutNumber. Whenver renaming is implemented this will be a struggle to fix (maybe).
+            var fileNames = Directory.GetFiles(LoadoutPath);
+            if (fileNames.Length > 0)
+            {
+                _loadoutNumber = fileNames.Count() + 1;
+            } else
+            {
+                _loadoutNumber = 1;
+            }
+
+
             var loadout = _loadouts.CreateCategory("Loadout " + _loadoutNumber, Color.cyan);
             
             loadout.CreateFunctionElement("Apply Loadout", Color.green, delegate
@@ -102,69 +168,37 @@ namespace PowerTools.Tools
             loadout.CreateFunctionElement("Delete Loadout", betterRed, delegate
             {
                 _loadouts.Elements.Remove(loadout);
+                File.Delete(Path.Combine(LoadoutPath, loadout.Name + ".txt"));
                 MenuManager.SelectCategory(_loadouts);
                 
             }, "Are you sure?");
 
-            BoneMenuNameButtonCreator( "Head slot: ", _headSlotName, loadout);
+            BoneMenuNameButtonCreator("Head slot: ", _headSlotName, loadout);
             BoneMenuNameButtonCreator("Back left slot: ", _backLeftSlotName, loadout);
             BoneMenuNameButtonCreator("Back right slot: ", _backRightSlotName, loadout);
             BoneMenuNameButtonCreator("Left handgun slot: ", _leftHandSlotName, loadout);
             BoneMenuNameButtonCreator("Right handgun slot: ", _rightHandSlotName, loadout);
             BoneMenuNameButtonCreator("Hip slot: ", _hipSlotName, loadout);
+
+            string[] loadoutData = new string[]
+            {
+                loadout.Name, 
+                _headSlot, 
+                _backLeftSlot, 
+                _backRightSlot, 
+                _leftHandSlot, 
+                _rightHandSlot, 
+                _hipslot, 
+                _headSlotName,
+                _backLeftSlotName,
+                _backRightSlotName,
+                _leftHandSlotName,
+                _rightHandSlotName,
+                _hipSlotName
+            };
             
-            ModData data = new ModData();
-            /*data.Name = loadout.Name;
-            data.HeadHolster = _headSlot;
-            data.BackLeftHolster = _backLeftSlot;
-            data.BackRightHolster = _backRightSlot;
-            data.LeftHandHolster = _leftHandSlot;
-            data.RightHandHolster = _rightHandSlot;
-            data.HipHolster = _hipslot;
-            data.HeadBarcode = _headSlotName;
-            data.BackLeftBarcode = _backLeftSlotName;
-            data.BackRightBarcode = _backRightSlotName;
-            data.LeftHandBarcode = _leftHandSlotName;
-            data.RightHandBarcode = _rightHandSlotName;
-            data.HipBarcode = _hipSlotName;*/
-            
-            data.Name = "YourNameValue";
-            data.HeadHolster = "HeadSlotValue";
-            data.BackLeftHolster = "BackLeftSlotValue";
-            data.BackRightHolster = "BackRightSlotValue";
-            data.LeftHandHolster = "LeftHandSlotValue";
-            data.RightHandHolster = "RightHandSlotValue";
-            data.HipHolster = "HipSlotValue";
-            data.HeadBarcode = "HeadSlotNameValue";
-            data.BackLeftBarcode = "BackLeftSlotNameValue";
-            data.BackRightBarcode = "BackRightSlotNameValue";
-            data.LeftHandBarcode = "LeftHandSlotNameValue";
-            data.RightHandBarcode = "RightHandSlotNameValue";
-            data.HipBarcode = "HipSlotNameValue";
-            
-            
-            //string json = JsonConvert.SerializeObject(data, Formatting.Indented);
-            string jason = JsonUtility.ToJson(data);
-            MelonLogger.Msg(data);
-            MelonLogger.Msg(jason);
-            MelonLogger.Msg(data.Name);
-            MelonLogger.Msg(data.HeadHolster);
-            MelonLogger.Msg(data.BackLeftHolster);
-            MelonLogger.Msg(data.BackRightHolster);
-            MelonLogger.Msg(data.LeftHandHolster);
-            MelonLogger.Msg(data.RightHandHolster);
-            MelonLogger.Msg(data.HipHolster);
-            MelonLogger.Msg(data.HeadBarcode);
-            MelonLogger.Msg(data.BackLeftBarcode);
-            MelonLogger.Msg(data.BackRightBarcode);
-            MelonLogger.Msg(data.LeftHandBarcode);
-            MelonLogger.Msg(data.RightHandBarcode);
-            MelonLogger.Msg(data.HipBarcode);
-            File.WriteAllText(Path.Combine("UserData/Loadouts", loadout.Name + ".json"), jason);
+            File.WriteAllLines(Path.Combine(LoadoutPath, loadout.Name + ".txt"), loadoutData);
         }
-
-        
-
         
         private static void GetBarcode(GameObject slotVar , ref string slot, ref string name)
         {
@@ -234,7 +268,7 @@ namespace PowerTools.Tools
             }
         }
     }
-    public class ModData : Il2CppSystem.Object
+    public class LoadoutData : Il2CppSystem.Object
     {
         public string Name { get; set; }
 

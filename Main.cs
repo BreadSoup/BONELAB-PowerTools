@@ -3,6 +3,7 @@ using BoneLib.BoneMenu;
 using BoneLib.BoneMenu.Elements;
 using MelonLoader;
 using PowerTools.Tools;
+using System.IO;
 using UnityEngine;
 
 namespace PowerTools
@@ -12,7 +13,8 @@ namespace PowerTools
         public static MenuCategory Category;
 
         public static MelonPreferences_Category MelonPrefCategory { get; private set; }
-        
+
+        public static readonly string PowerToolsPath = Path.Combine(MelonUtils.UserDataDirectory, "PowerTools");
 
         public override void OnInitializeMelon()
         {
