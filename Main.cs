@@ -16,6 +16,7 @@ namespace PowerTools
 
         public override void OnInitializeMelon()
         {
+            MelonLogger.Msg("Game path: " + Application.dataPath);
             Hooking.OnLevelInitialized += (_) => { OnSceneAwake(); };
             MelonPrefCategory = MelonPreferences.CreateCategory("Power Tools");
             DeathTimeCustomizer.MelonPreferencesCreator();
@@ -36,8 +37,8 @@ namespace PowerTools
                 "<color=#00FFC3>o</color>" +
                 "<color=#00FFCC>o</color>" +
                 "<color=#00FFD4>l</color>" +
-                "<color=#00FFD4>s</color>"
-                , Color.white);
+                "<color=#00FFD4>s</color>",
+                Color.white);
             DeathTimeCustomizer.BoneMenuCreator();
             ReloadOnDeathCustomizer.BoneMenuCreator();
             ButtonDisabler.BoneMenuCreator();
@@ -56,11 +57,6 @@ namespace PowerTools
             ReloadOnDeathCustomizer.ReloadOnDeathSetter(ReloadOnDeathCustomizer.ReloadLevel);
             
             RagdollOnDeath.OnSetEnabled(RagdollOnDeath.RagdollOnDeathIsEnabled);
-            
-            //Loadouts.SlotFinder();
-            //Loadouts.LoadoutSetter();
-            
-
         }
         
         public override void OnUpdate()
