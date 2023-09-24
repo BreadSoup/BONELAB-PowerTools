@@ -52,37 +52,41 @@
   </ItemGroup>
   <ItemGroup>
     <Reference Include="0Harmony">
-      <HintPath>$(GameDir)\MelonLoader\0Harmony.dll</HintPath>
+      <HintPath>..\TideFusion\Core\managed\0Harmony.dll</HintPath>
     </Reference>
+    <Reference Include="Accessibility" />
     <Reference Include="Assembly-CSharp">
-      <HintPath>$(GameDir)\MelonLoader\Managed\Assembly-CSharp.dll</HintPath>
+      <HintPath>..\TideFusion\Core\managed\Assembly-CSharp.dll</HintPath>
     </Reference>
     <Reference Include="Assembly-CSharp-firstpass">
-      <HintPath>$(GameDir)\MelonLoader\Managed\Assembly-CSharp-firstpass.dll</HintPath>
+      <HintPath>..\TideFusion\Core\managed\Assembly-CSharp-firstpass.dll</HintPath>
     </Reference>
     <Reference Include="BoneLib">
-      <HintPath>$(GameDir)\Mods\BoneLib.dll</HintPath>
+      <HintPath>..\..\Referencing\BoneLib.dll</HintPath>
     </Reference>
     <Reference Include="Boo.Lang">
-      <HintPath>$(GameDir)\MelonLoader\Managed\Boo.Lang.dll</HintPath>
+      <HintPath>..\TideFusion\Core\managed\Boo.Lang.dll</HintPath>
     </Reference>
     <Reference Include="Boo.Lang.Compiler">
-      <HintPath>$(GameDir)\MelonLoader\Managed\Boo.Lang.Compiler.dll</HintPath>
+      <HintPath>..\TideFusion\Core\managed\Boo.Lang.Compiler.dll</HintPath>
     </Reference>
     <Reference Include="Boo.Lang.Extensions">
-      <HintPath>$(GameDir)\MelonLoader\Managed\Boo.Lang.Extensions.dll</HintPath>
+      <HintPath>..\TideFusion\Core\managed\Boo.Lang.Extensions.dll</HintPath>
     </Reference>
     <Reference Include="Boo.Lang.Parser">
-      <HintPath>$(GameDir)\MelonLoader\Managed\Boo.Lang.Parser.dll</HintPath>
+      <HintPath>..\TideFusion\Core\managed\Boo.Lang.Parser.dll</HintPath>
     </Reference>
     <Reference Include="Boo.Lang.PatternMatching">
-      <HintPath>$(GameDir)\MelonLoader\Managed\Boo.Lang.PatternMatching.dll</HintPath>
+      <HintPath>..\TideFusion\Core\managed\Boo.Lang.PatternMatching.dll</HintPath>
     </Reference>
     <Reference Include="Boo.Lang.Useful">
-      <HintPath>$(GameDir)\MelonLoader\Managed\Boo.Lang.Useful.dll</HintPath>
+      <HintPath>..\TideFusion\Core\managed\Boo.Lang.Useful.dll</HintPath>
     </Reference>
     <Reference Include="ch.sycoforge.Decal">
-      <HintPath>$(GameDir)\MelonLoader\Managed\ch.sycoforge.Decal.dll</HintPath>
+      <HintPath>..\TideFusion\Core\managed\ch.sycoforge.Decal.dll</HintPath>
+    </Reference>
+    <Reference Include="Commons.Xml.Relaxng">
+      <HintPath>..\TideFusion\Core\managed\Commons.Xml.Relaxng.dll</HintPath>
     </Reference>
     <Reference Include="cscompmgd, Version=8.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -138,49 +142,49 @@
       <HintPath>$(GameDir)\MelonLoader\Managed\Il2CppMicrosoft.MixedReality.OpenXR.dll</HintPath>
     </Reference>
     <Reference Include="Il2CppMono.Security">
-      <HintPath>$(GameDir)\MelonLoader\Managed\Il2CppMono.Security.dll</HintPath>
+      <HintPath>..\BONELAB-Fusion\bin\Debug\Il2CppMono.Security.dll</HintPath>
     </Reference>
     <Reference Include="Il2Cppmscorlib">
-      <HintPath>$(GameDir)\MelonLoader\Managed\Il2Cppmscorlib.dll</HintPath>
+      <HintPath>..\BONELAB-Fusion\bin\Debug\Il2Cppmscorlib.dll</HintPath>
     </Reference>
     <Reference Include="Il2CppNewtonsoft.Json">
-      <HintPath>$(GameDir)\MelonLoader\Managed\Il2CppNewtonsoft.Json.dll</HintPath>
+      <HintPath>..\BONELAB-Fusion\bin\Debug\Il2CppNewtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="Il2CppSystem">
-      <HintPath>$(GameDir)\MelonLoader\Managed\Il2CppSystem.dll</HintPath>
+      <HintPath>..\BONELAB-Fusion\bin\Debug\Il2CppSystem.dll</HintPath>
     </Reference>
     <Reference Include="Il2CppSystem.Configuration">
-      <HintPath>$(GameDir)\MelonLoader\Managed\Il2CppSystem.Configuration.dll</HintPath>
+      <HintPath>..\BONELAB-Fusion\bin\Debug\Il2CppSystem.Configuration.dll</HintPath>
     </Reference>
     <Reference Include="Il2CppSystem.Core">
-      <HintPath>$(GameDir)\MelonLoader\Managed\Il2CppSystem.Core.dll</HintPath>
+      <HintPath>..\BONELAB-Fusion\bin\Debug\Il2CppSystem.Core.dll</HintPath>
     </Reference>
     <Reference Include="Il2CppSystem.Data">
-      <HintPath>$(GameDir)\MelonLoader\Managed\Il2CppSystem.Data.dll</HintPath>
+      <HintPath>..\BONELAB-Fusion\bin\Debug\Il2CppSystem.Data.dll</HintPath>
     </Reference>
     <Reference Include="Il2CppSystem.IO.Compression">
-      <HintPath>$(GameDir)\MelonLoader\Managed\Il2CppSystem.IO.Compression.dll</HintPath>
+      <HintPath>..\BONELAB-Fusion\bin\Debug\Il2CppSystem.IO.Compression.dll</HintPath>
     </Reference>
     <Reference Include="Il2CppSystem.IO.Compression.FileSystem">
       <HintPath>$(GameDir)\MelonLoader\Managed\Il2CppSystem.IO.Compression.FileSystem.dll</HintPath>
     </Reference>
     <Reference Include="Il2CppSystem.Numerics">
-      <HintPath>$(GameDir)\MelonLoader\Managed\Il2CppSystem.Numerics.dll</HintPath>
+      <HintPath>..\BONELAB-Fusion\bin\Debug\Il2CppSystem.Numerics.dll</HintPath>
     </Reference>
     <Reference Include="Il2CppSystem.Runtime.Serialization">
-      <HintPath>$(GameDir)\MelonLoader\Managed\Il2CppSystem.Runtime.Serialization.dll</HintPath>
+      <HintPath>..\BONELAB-Fusion\bin\Debug\Il2CppSystem.Runtime.Serialization.dll</HintPath>
     </Reference>
     <Reference Include="Il2CppSystem.ServiceModel.Internals">
-      <HintPath>$(GameDir)\MelonLoader\Managed\Il2CppSystem.ServiceModel.Internals.dll</HintPath>
+      <HintPath>..\BONELAB-Fusion\bin\Debug\Il2CppSystem.ServiceModel.Internals.dll</HintPath>
     </Reference>
     <Reference Include="Il2CppSystem.Xml">
-      <HintPath>$(GameDir)\MelonLoader\Managed\Il2CppSystem.Xml.dll</HintPath>
+      <HintPath>..\BONELAB-Fusion\bin\Debug\Il2CppSystem.Xml.dll</HintPath>
     </Reference>
     <Reference Include="Il2CppSystem.Xml.Linq">
-      <HintPath>$(GameDir)\MelonLoader\Managed\Il2CppSystem.Xml.Linq.dll</HintPath>
+      <HintPath>..\BONELAB-Fusion\bin\Debug\Il2CppSystem.Xml.Linq.dll</HintPath>
     </Reference>
     <Reference Include="MelonLoader">
-      <HintPath>$(GameDir)\MelonLoader\MelonLoader.dll</HintPath>
+      <HintPath>..\TideFusion\Core\managed\MelonLoader.dll</HintPath>
     </Reference>
     <Reference Include="MeshBakerCore">
       <HintPath>$(GameDir)\MelonLoader\Managed\MeshBakerCore.dll</HintPath>
@@ -213,30 +217,102 @@
     <Reference Include="Mono.WebBrowser">
       <HintPath>$(GameDir)\MelonLoader\Managed\Mono.WebBrowser.dll</HintPath>
     </Reference>
+    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\BONELAB-Fusion\bin\Debug\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="Oculus.VR">
+      <HintPath>..\TideFusion\Core\managed\Oculus.VR.dll</HintPath>
+    </Reference>
+    <Reference Include="RayFireAssembly">
+      <HintPath>..\TideFusion\Core\managed\RayFireAssembly.dll</HintPath>
+    </Reference>
+    <Reference Include="RFLib_DotNet_2018">
+      <HintPath>..\TideFusion\Core\managed\RFLib_DotNet_2018.dll</HintPath>
+    </Reference>
+    <Reference Include="SLZ.Algorithms">
+      <HintPath>..\TideFusion\Core\managed\SLZ.Algorithms.dll</HintPath>
+    </Reference>
     <Reference Include="SLZ.Marrow">
-      <HintPath>$(GameDir)\MelonLoader\Managed\SLZ.Marrow.dll</HintPath>
+      <HintPath>..\TideFusion\Core\managed\SLZ.Marrow.dll</HintPath>
     </Reference>
     <Reference Include="SLZ.Marrow.SDK">
-      <HintPath>$(GameDir)\MelonLoader\Managed\SLZ.Marrow.SDK.dll</HintPath>
+      <HintPath>..\TideFusion\Core\managed\SLZ.Marrow.SDK.dll</HintPath>
+    </Reference>
+    <Reference Include="SLZ.Serialize">
+      <HintPath>..\TideFusion\Core\managed\SLZ.Serialize.dll</HintPath>
+    </Reference>
+    <Reference Include="SMDiagnostics, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\TideFusion\Core\managed\SMDiagnostics.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.Composition" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Configuration.Install" />
+    <Reference Include="System.Json">
+      <HintPath>..\BONELAB-Fusion\bin\Debug\System.Json.dll</HintPath>
+    </Reference>
     <Reference Include="UnhollowerBaseLib">
-      <HintPath>$(GameDir)\MelonLoader\Managed\UnhollowerBaseLib.dll</HintPath>
+      <HintPath>..\BONELAB-Fusion\bin\Debug\UnhollowerBaseLib.dll</HintPath>
+    </Reference>
+    <Reference Include="UnhollowerRuntimeLib">
+      <HintPath>..\BONELAB-Fusion\bin\Debug\UnhollowerRuntimeLib.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Collections">
+      <HintPath>..\BONELAB-Fusion\bin\Debug\Unity.Collections.dll</HintPath>
     </Reference>
     <Reference Include="Unity.TextMeshPro">
-      <HintPath>$(GameDir)\MelonLoader\Managed\Unity.TextMeshPro.dll</HintPath>
+      <HintPath>..\BONELAB-Fusion\bin\Debug\Unity.TextMeshPro.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine">
       <HintPath>$(GameDir)\MelonLoader\Managed\UnityEngine.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.CoreModule">
-      <HintPath>$(GameDir)\MelonLoader\Managed\UnityEngine.CoreModule.dll</HintPath>
+      <HintPath>..\BONELAB-Fusion\bin\Debug\UnityEngine.CoreModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.Il2CppAssetBundleManager">
+      <HintPath>..\BONELAB-Fusion\bin\Debug\UnityEngine.Il2CppAssetBundleManager.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.Il2CppImageConversionManager">
+      <HintPath>..\BONELAB-Fusion\bin\Debug\UnityEngine.Il2CppImageConversionManager.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.JSONSerializeModule">
-      <HintPath>..\..\..\..\Program Files (x86)\Steam\steamapps\common\BONELAB\MelonLoader\Managed\UnityEngine.JSONSerializeModule.dll</HintPath>
+      <HintPath>..\BONELAB-Fusion\bin\Debug\UnityEngine.JSONSerializeModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.RuntimeInitializeOnLoadManagerInitializerModule">
+      <HintPath>..\BONELAB-Fusion\bin\Debug\UnityEngine.RuntimeInitializeOnLoadManagerInitializerModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.UI">
-      <HintPath>$(GameDir)\MelonLoader\Managed\UnityEngine.UI.dll</HintPath>
+      <HintPath>..\BONELAB-Fusion\bin\Debug\UnityEngine.UI.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.UIElementsModule">
+      <HintPath>..\BONELAB-Fusion\bin\Debug\UnityEngine.UIElementsModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.UmbraModule">
+      <HintPath>..\BONELAB-Fusion\bin\Debug\UnityEngine.UmbraModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.UNETModule">
+      <HintPath>..\BONELAB-Fusion\bin\Debug\UnityEngine.UNETModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.UnityConnectModule">
+      <HintPath>..\BONELAB-Fusion\bin\Debug\UnityEngine.UnityConnectModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.UnityCurlModule">
+      <HintPath>..\BONELAB-Fusion\bin\Debug\UnityEngine.UnityCurlModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.UnityTestProtocolModule">
+      <HintPath>..\BONELAB-Fusion\bin\Debug\UnityEngine.UnityTestProtocolModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.UnityWebRequestAudioModule">
+      <HintPath>..\BONELAB-Fusion\bin\Debug\UnityEngine.UnityWebRequestAudioModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.UnityWebRequestWWWModule">
+      <HintPath>..\BONELAB-Fusion\bin\Debug\UnityEngine.UnityWebRequestWWWModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.VirtualTexturingModule">
+      <HintPath>..\BONELAB-Fusion\bin\Debug\UnityEngine.VirtualTexturingModule.dll</HintPath>
     </Reference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
