@@ -42,6 +42,7 @@
     <Compile Include="Tools\BugoSpray.cs" />
     <Compile Include="Tools\ButtonDisabler.cs" />
     <Compile Include="Tools\DeathTimeCustomizer.cs" />
+    <Compile Include="Tools\GravityAdjuster.cs" />
     <Compile Include="Tools\Loadouts.cs" />
     <Compile Include="Tools\RagdollOnDeath.cs" />
     <Compile Include="Tools\ReloadOnDeathCustomizer.cs" />
@@ -234,6 +235,9 @@
     </Reference>
     <Reference Include="UnityEngine.JSONSerializeModule">
       <HintPath>..\..\..\..\Program Files (x86)\Steam\steamapps\common\BONELAB\MelonLoader\Managed\UnityEngine.JSONSerializeModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.PhysicsModule">
+      <HintPath>D:\SteamLibrary\steamapps\common\BONELAB\MelonLoader\Managed\UnityEngine.PhysicsModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.UI">
       <HintPath>$(GameDir)\MelonLoader\Managed\UnityEngine.UI.dll</HintPath>

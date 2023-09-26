@@ -26,6 +26,8 @@ namespace PowerTools
             ButtonDisabler.MelonPreferencesCreator();
             RagdollOnDeath.MelonPreferencesCreator();
             VaultingToggle.MelonPreferencesCreator();
+            //Loadouts.MelonPreferencesCreator();
+            GravityAdjuster.MelonPreferencesCreator();
 
 
             Category = MenuManager.CreateCategory(
@@ -47,6 +49,7 @@ namespace PowerTools
             RagdollOnDeath.BoneMenuCreator();
             VaultingToggle.BoneMenuCreator();
             Loadouts.BoneMenuCreator();
+            GravityAdjuster.BoneMenuCreator();
         }
 
         private static void OnSceneAwake()
