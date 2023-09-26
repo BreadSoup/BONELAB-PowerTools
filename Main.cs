@@ -47,6 +47,7 @@ namespace PowerTools
             ReloadOnDeathCustomizer.BoneMenuCreator();
             ButtonDisabler.BoneMenuCreator();
             RagdollOnDeath.BoneMenuCreator();
+            RagdollLegs.BoneMenuCreator();
             VaultingToggle.BoneMenuCreator();
             Loadouts.BoneMenuCreator();
             GravityAdjuster.BoneMenuCreator();
