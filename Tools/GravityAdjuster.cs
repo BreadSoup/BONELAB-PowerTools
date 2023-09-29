@@ -1,70 +1,93 @@
-﻿using System;
-using BoneLib;
+﻿using BoneLib.BoneMenu.Elements;
 using MelonLoader;
 using UnityEngine;
+// ReSharper disable AccessToModifiedClosure
 
 namespace PowerTools.Tools
 {
-    public class GravityAdjuster
+    public abstract class GravityAdjuster
     {
+        private static MelonPreferences_Entry<float> MelonPrefGravityValue { get; set; }
         private static float _gravity = -9.81f;
-        private static float _originalGravity = -9.8f;
-        private static bool isEnabled;
-
+        //private static float _originalGravity = -9.8f;
+        private static bool _isEnabled;
+        
+        public static void MelonPreferencesCreator()
+        {
+            MelonPrefGravityValue = Main.MelonPrefCategory.CreateEntry("Gravity Adjuster Value", 9.81f);
+            if (MelonPrefGravityValue != null)
+            {
+                _gravity = MelonPrefGravityValue.Value;
+            }
+        }
+        
         public static void BoneMenuCreator()
         {
-            var gravityCustomizer = Main.Category.CreateCategory("Gravity Adjuster", "#00fc82");
+            var gravityCustomizer = Main.Category.CreateCategory("Gravity Adjuster", "#cc51fc");
         
-            gravityCustomizer.CreateBoolElement("Mod Toggle", Color.yellow, isEnabled, OnSetEnabled);
-            gravityCustomizer.CreateFloatElement("Gravity Value (0.1)", Color.yellow, _gravity, 0.1f, -100f, 100f, (r) =>
-            {
-                MelonPreferences.SetEntryValue("Power Tools", "Gravity Adjuster Value", r);
-                MelonPreferences.Save();
-                _gravity = r;
-                GravityAdjust();
-            });
-            gravityCustomizer.CreateFloatElement("Gravity Value (1)", Color.yellow, _gravity, 1f, -100f, 100f, (r) =>
-            {
-                MelonPreferences.SetEntryValue("Power Tools", "Gravity Adjuster Value", r);
-                MelonPreferences.Save();
-                _gravity = r;
-                GravityAdjust();
-            });
-            gravityCustomizer.CreateFloatElement("Gravity Value (10)", Color.yellow, _gravity, 10f, -100f, 100f, (r) =>
-            {
-                MelonPreferences.SetEntryValue("Power Tools", "Gravity Adjuster Value", r);
-                MelonPreferences.Save();
-                _gravity = r;
-                GravityAdjust();
-            });
+            gravityCustomizer.CreateBoolElement("Mod Toggle", Color.yellow, _isEnabled, OnSetEnabled);
 
+            //100% a better way to do this but I don't feel like doing it
+            FloatElement one = null;
+            FloatElement ten = null;
             
+            var pointOne = gravityCustomizer.CreateFloatElement("Gravity Value (0.1)", Color.yellow, _gravity, 0.1f, -25f, 25f, (r) =>
+            {
+                MelonPrefGravityValue.Value = r;
+                Main.MelonPrefCategory.SaveToFile(false);
+                _gravity = r;
+                one?.SetValue(r);
+                ten?.SetValue(r);
+                GravityAdjust();
+            });
+            one = gravityCustomizer.CreateFloatElement("Gravity Value (1)", Color.yellow, _gravity, 1f, -25f, 25f, (r) =>
+            {
+                MelonPrefGravityValue.Value = r;
+                Main.MelonPrefCategory.SaveToFile(false);
+                pointOne?.SetValue(r);
+                ten?.SetValue(r);
+                _gravity = r;
+                GravityAdjust();
+            });
+            ten = gravityCustomizer.CreateFloatElement("Gravity Value (5)", Color.yellow, _gravity, 5f, -25f, 25f, (r) =>
+            {
+                MelonPrefGravityValue.Value = r;
+                Main.MelonPrefCategory.SaveToFile(false);
+                pointOne?.SetValue(r);
+                one?.SetValue(r);
+                _gravity = r;
+                GravityAdjust();
+            });
             
-            
-                
         }
 
         private static void OnSetEnabled(bool value)
         {
-            MelonPreferences.SetEntryValue("Power Tools", "Gravity Adjuster", value);
-            MelonPreferences.Save();
-            isEnabled = value;
-            GravityAdjust();
+            _isEnabled = value;
+            if (value)
+            {
+                GravityAdjust();
+            }
+            else
+            {
+                GravityReset();
+            }
         }
-        
+
+        private static void GravityReset()
+        {
+            Physics.gravity = new Vector3(0, -9.81f, 0);
+        }
+
 
         public static void GravityAdjust()
         {
-            if (isEnabled)
+            if (_isEnabled)
             {
                 Physics.gravity = new Vector3(0, _gravity, 0);
             }
         }
 
-        public static void MelonPreferencesCreator()
-        {
-            MelonPreferences.CreateEntry("Power Tools", "Gravity Adjuster", false);
-            MelonPreferences.CreateEntry("Power Tools", "Gravity Adjuster Value", -9.81f);
-        }
+
     }
 }

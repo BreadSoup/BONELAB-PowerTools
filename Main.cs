@@ -47,10 +47,11 @@ namespace PowerTools
             ReloadOnDeathCustomizer.BoneMenuCreator();
             ButtonDisabler.BoneMenuCreator();
             RagdollOnDeath.BoneMenuCreator();
-            RagdollLegs.BoneMenuCreator();
             VaultingToggle.BoneMenuCreator();
-            Loadouts.BoneMenuCreator();
             GravityAdjuster.BoneMenuCreator();
+            Loadouts.BoneMenuCreator();
+            RagdollLegs.BoneMenuCreator();
+            
         }
 
         private static void OnSceneAwake()
@@ -63,6 +64,8 @@ namespace PowerTools
             ReloadOnDeathCustomizer.ReloadOnDeathSetter(ReloadOnDeathCustomizer.ReloadLevel);
             
             RagdollOnDeath.OnSetEnabled(RagdollOnDeath.RagdollOnDeathIsEnabled);
+            
+            GravityAdjuster.GravityAdjust();
         }
         
         public override void OnUpdate()
