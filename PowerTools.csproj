@@ -43,6 +43,7 @@
     <Compile Include="Tools\ButtonDisabler.cs" />
     <Compile Include="Tools\DeathTimeCustomizer.cs" />
     <Compile Include="Tools\GravityAdjuster.cs" />
+    <Compile Include="Tools\InfiniteAmmo.cs" />
     <Compile Include="Tools\Loadouts.cs" />
     <Compile Include="Tools\RagdollLegs.cs" />
     <Compile Include="Tools\RagdollOnDeath.cs" />

@@ -51,7 +51,7 @@ namespace PowerTools.Tools
 
         public static void BoneMenuCreator()
         {
-            _loadouts = Main.Category.CreateCategory("Loadouts", "#00fc82");
+            _loadouts = Main.Category.CreateCategory("Loadouts", "#ff4060");
             _loadouts.CreateFunctionElement("Save Current Loadout", Color.green, SaveLoadout);
 
             // Loading loadouts. This is very basic and idiotic and should probably be redone if you want.

@@ -28,6 +28,7 @@ namespace PowerTools
             VaultingToggle.MelonPreferencesCreator();
             //Loadouts.MelonPreferencesCreator();
             GravityAdjuster.MelonPreferencesCreator();
+            InfiniteAmmo.MelonPreferencesCreator();
 
 
             Category = MenuManager.CreateCategory(
@@ -51,6 +52,7 @@ namespace PowerTools
             GravityAdjuster.BoneMenuCreator();
             Loadouts.BoneMenuCreator();
             RagdollLegs.BoneMenuCreator();
+            InfiniteAmmo.BoneMenuCreator();
             
         }
 

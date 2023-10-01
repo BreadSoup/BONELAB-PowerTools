@@ -17,6 +17,7 @@ namespace PowerTools.Tools
             if (MelonPrefVaultingToggle != null)
             {
                 VaultingToggleIsEnabled = MelonPrefVaultingToggle.Value;
+                OnSetEnabled(VaultingToggleIsEnabled);
             }
         }
 
@@ -43,6 +44,7 @@ namespace PowerTools.Tools
         private static void OnSetEnabled(bool value)
         {
             VaultingToggleIsEnabled = value;
+            MelonPrefVaultingToggle.Value = value;
             Main.MelonPrefCategory.SaveToFile(false);
         }
     }

@@ -9,7 +9,7 @@ namespace PowerTools.Tools
         //need to make a melody patch or whatever so it doesn't rest when unragdolling from something like ragdoll mod
         public static void BoneMenuCreator()
         {
-            var ragdollLegs = Main.Category.CreateCategory("Ragdoll Legs", "#51fc5a");
+            var ragdollLegs = Main.Category.CreateCategory("Ragdoll Legs", "#ffa040");
             ragdollLegs.CreateBoolElement("Mod Toggle", Color.yellow, _isEnabled, OnSetEnabled);
 
         }
