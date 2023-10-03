@@ -217,6 +217,7 @@ namespace PowerTools.Tools
         private static void SpawnLoadout(string barcodeValue, string slotPath)
         {
             var slot = GameObject.Find(slotPath);
+            FusionModuleSender(barcodeValue, slot);
             var head = Player.playerHead.transform;
             
             var reference = new SpawnableCrateReference(barcodeValue);
@@ -250,7 +251,11 @@ namespace PowerTools.Tools
             }
         }
 
-        // To be completely honest I dont know why this uses IEnumerator but I dont feel like loading up the game to see if I could just include it in the Action method if it works it works
+        public static void FusionModuleSender(string barcode, GameObject slot)
+        {
+            
+        }
+        
         private static IEnumerator WaitAndFixGun(Gun gun) //Thanks Swipez again
         {
             yield return null;
