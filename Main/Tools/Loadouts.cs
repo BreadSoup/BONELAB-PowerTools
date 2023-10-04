@@ -217,7 +217,7 @@ namespace PowerTools.Tools
         private static void SpawnLoadout(string barcodeValue, string slotPath)
         {
             var slot = GameObject.Find(slotPath);
-            FusionModuleSender(barcodeValue, slot);
+            FusionModuleSender(barcodeValue, slotPath);
             var head = Player.playerHead.transform;
             
             var reference = new SpawnableCrateReference(barcodeValue);
@@ -251,7 +251,7 @@ namespace PowerTools.Tools
             }
         }
 
-        public static void FusionModuleSender(string barcode, GameObject slot)
+        public static void FusionModuleSender(string barcode, String slotPath)
         {
             
         }
