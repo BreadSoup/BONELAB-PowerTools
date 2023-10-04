@@ -1,0 +1,249 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{0DEB755F-D57A-4285-9D70-C592E340CDB4}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <RootNamespace>PowerTools</RootNamespace>
+    <AssemblyName>PowerTools</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="BuildInfo.cs" />
+    <Compile Include="Main.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Tools\BugoSpray.cs" />
+    <Compile Include="Tools\ButtonDisabler.cs" />
+    <Compile Include="Tools\DeathTimeCustomizer.cs" />
+    <Compile Include="Tools\GravityAdjuster.cs" />
+    <Compile Include="Tools\InfiniteAmmo.cs" />
+    <Compile Include="Tools\Loadouts.cs" />
+    <Compile Include="Tools\RagdollLegs.cs" />
+    <Compile Include="Tools\RagdollOnDeath.cs" />
+    <Compile Include="Tools\ReloadOnDeathCustomizer.cs" />
+    <Compile Include="Tools\VaultingToggle.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="PowerTools.csproj.user" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="0Harmony">
+      <HintPath>$(GameDir)\MelonLoader\0Harmony.dll</HintPath>
+    </Reference>
+    <Reference Include="Assembly-CSharp">
+      <HintPath>$(GameDir)\MelonLoader\Managed\Assembly-CSharp.dll</HintPath>
+    </Reference>
+    <Reference Include="Assembly-CSharp-firstpass">
+      <HintPath>$(GameDir)\MelonLoader\Managed\Assembly-CSharp-firstpass.dll</HintPath>
+    </Reference>
+    <Reference Include="BoneLib">
+      <HintPath>$(GameDir)\Mods\BoneLib.dll</HintPath>
+    </Reference>
+    <Reference Include="Boo.Lang">
+      <HintPath>$(GameDir)\MelonLoader\Managed\Boo.Lang.dll</HintPath>
+    </Reference>
+    <Reference Include="Boo.Lang.Compiler">
+      <HintPath>$(GameDir)\MelonLoader\Managed\Boo.Lang.Compiler.dll</HintPath>
+    </Reference>
+    <Reference Include="Boo.Lang.Extensions">
+      <HintPath>$(GameDir)\MelonLoader\Managed\Boo.Lang.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="Boo.Lang.Parser">
+      <HintPath>$(GameDir)\MelonLoader\Managed\Boo.Lang.Parser.dll</HintPath>
+    </Reference>
+    <Reference Include="Boo.Lang.PatternMatching">
+      <HintPath>$(GameDir)\MelonLoader\Managed\Boo.Lang.PatternMatching.dll</HintPath>
+    </Reference>
+    <Reference Include="Boo.Lang.Useful">
+      <HintPath>$(GameDir)\MelonLoader\Managed\Boo.Lang.Useful.dll</HintPath>
+    </Reference>
+    <Reference Include="ch.sycoforge.Decal">
+      <HintPath>$(GameDir)\MelonLoader\Managed\ch.sycoforge.Decal.dll</HintPath>
+    </Reference>
+    <Reference Include="cscompmgd, Version=8.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>$(GameDir)\MelonLoader\Managed\cscompmgd.dll</HintPath>
+    </Reference>
+    <Reference Include="CustomMarshalers" />
+    <Reference Include="Facepunch.Steamworks.Win64">
+      <HintPath>$(GameDir)\MelonLoader\Managed\Facepunch.Steamworks.Win64.dll</HintPath>
+    </Reference>
+    <Reference Include="Google.Protobuf">
+      <HintPath>$(GameDir)\MelonLoader\Managed\Google.Protobuf.dll</HintPath>
+    </Reference>
+    <Reference Include="Grpc.Core">
+      <HintPath>$(GameDir)\MelonLoader\Managed\Grpc.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="HBAO.Demo.Runtime">
+      <HintPath>$(GameDir)\MelonLoader\Managed\HBAO.Demo.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="HBAO.Demo.Universal.Runtime">
+      <HintPath>$(GameDir)\MelonLoader\Managed\HBAO.Demo.Universal.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="HBAO.Runtime">
+      <HintPath>$(GameDir)\MelonLoader\Managed\HBAO.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="HBAO.Universal.Runtime">
+      <HintPath>$(GameDir)\MelonLoader\Managed\HBAO.Universal.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="I18N">
+      <HintPath>$(GameDir)\MelonLoader\Managed\I18N.dll</HintPath>
+    </Reference>
+    <Reference Include="I18N.CJK">
+      <HintPath>$(GameDir)\MelonLoader\Managed\I18N.CJK.dll</HintPath>
+    </Reference>
+    <Reference Include="I18N.MidEast">
+      <HintPath>$(GameDir)\MelonLoader\Managed\I18N.MidEast.dll</HintPath>
+    </Reference>
+    <Reference Include="I18N.Other">
+      <HintPath>$(GameDir)\MelonLoader\Managed\I18N.Other.dll</HintPath>
+    </Reference>
+    <Reference Include="I18N.Rare">
+      <HintPath>$(GameDir)\MelonLoader\Managed\I18N.Rare.dll</HintPath>
+    </Reference>
+    <Reference Include="I18N.West">
+      <HintPath>$(GameDir)\MelonLoader\Managed\I18N.West.dll</HintPath>
+    </Reference>
+    <Reference Include="IBM.Data.DB2">
+      <HintPath>$(GameDir)\MelonLoader\Managed\IBM.Data.DB2.dll</HintPath>
+    </Reference>
+    <Reference Include="Iced">
+      <HintPath>$(GameDir)\MelonLoader\Managed\Iced.dll</HintPath>
+    </Reference>
+    <Reference Include="Il2CppMicrosoft.MixedReality.OpenXR">
+      <HintPath>$(GameDir)\MelonLoader\Managed\Il2CppMicrosoft.MixedReality.OpenXR.dll</HintPath>
+    </Reference>
+    <Reference Include="Il2CppMono.Security">
+      <HintPath>$(GameDir)\MelonLoader\Managed\Il2CppMono.Security.dll</HintPath>
+    </Reference>
+    <Reference Include="Il2Cppmscorlib">
+      <HintPath>$(GameDir)\MelonLoader\Managed\Il2Cppmscorlib.dll</HintPath>
+    </Reference>
+    <Reference Include="Il2CppNewtonsoft.Json">
+      <HintPath>$(GameDir)\MelonLoader\Managed\Il2CppNewtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="Il2CppSystem">
+      <HintPath>$(GameDir)\MelonLoader\Managed\Il2CppSystem.dll</HintPath>
+    </Reference>
+    <Reference Include="Il2CppSystem.Configuration">
+      <HintPath>$(GameDir)\MelonLoader\Managed\Il2CppSystem.Configuration.dll</HintPath>
+    </Reference>
+    <Reference Include="Il2CppSystem.Core">
+      <HintPath>$(GameDir)\MelonLoader\Managed\Il2CppSystem.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Il2CppSystem.Data">
+      <HintPath>$(GameDir)\MelonLoader\Managed\Il2CppSystem.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="Il2CppSystem.IO.Compression">
+      <HintPath>$(GameDir)\MelonLoader\Managed\Il2CppSystem.IO.Compression.dll</HintPath>
+    </Reference>
+    <Reference Include="Il2CppSystem.IO.Compression.FileSystem">
+      <HintPath>$(GameDir)\MelonLoader\Managed\Il2CppSystem.IO.Compression.FileSystem.dll</HintPath>
+    </Reference>
+    <Reference Include="Il2CppSystem.Numerics">
+      <HintPath>$(GameDir)\MelonLoader\Managed\Il2CppSystem.Numerics.dll</HintPath>
+    </Reference>
+    <Reference Include="Il2CppSystem.Runtime.Serialization">
+      <HintPath>$(GameDir)\MelonLoader\Managed\Il2CppSystem.Runtime.Serialization.dll</HintPath>
+    </Reference>
+    <Reference Include="Il2CppSystem.ServiceModel.Internals">
+      <HintPath>$(GameDir)\MelonLoader\Managed\Il2CppSystem.ServiceModel.Internals.dll</HintPath>
+    </Reference>
+    <Reference Include="Il2CppSystem.Xml">
+      <HintPath>$(GameDir)\MelonLoader\Managed\Il2CppSystem.Xml.dll</HintPath>
+    </Reference>
+    <Reference Include="Il2CppSystem.Xml.Linq">
+      <HintPath>$(GameDir)\MelonLoader\Managed\Il2CppSystem.Xml.Linq.dll</HintPath>
+    </Reference>
+    <Reference Include="MelonLoader">
+      <HintPath>$(GameDir)\MelonLoader\MelonLoader.dll</HintPath>
+    </Reference>
+    <Reference Include="MeshBakerCore">
+      <HintPath>$(GameDir)\MelonLoader\Managed\MeshBakerCore.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Web.Infrastructure">
+      <HintPath>$(GameDir)\MelonLoader\Managed\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="Mono.CompilerServices.SymbolWriter">
+      <HintPath>$(GameDir)\MelonLoader\Managed\Mono.CompilerServices.SymbolWriter.dll</HintPath>
+    </Reference>
+    <Reference Include="Mono.CSharp">
+      <HintPath>$(GameDir)\MelonLoader\Managed\Mono.CSharp.dll</HintPath>
+    </Reference>
+    <Reference Include="Mono.Data.Sqlite">
+      <HintPath>$(GameDir)\MelonLoader\Managed\Mono.Data.Sqlite.dll</HintPath>
+    </Reference>
+    <Reference Include="Mono.Data.Tds">
+      <HintPath>$(GameDir)\MelonLoader\Managed\Mono.Data.Tds.dll</HintPath>
+    </Reference>
+    <Reference Include="Mono.Messaging">
+      <HintPath>$(GameDir)\MelonLoader\Managed\Mono.Messaging.dll</HintPath>
+    </Reference>
+    <Reference Include="Mono.Posix">
+      <HintPath>$(GameDir)\MelonLoader\Managed\Mono.Posix.dll</HintPath>
+    </Reference>
+    <Reference Include="Mono.Security">
+      <HintPath>$(GameDir)\MelonLoader\Managed\Mono.Security.dll</HintPath>
+    </Reference>
+    <Reference Include="Mono.WebBrowser">
+      <HintPath>$(GameDir)\MelonLoader\Managed\Mono.WebBrowser.dll</HintPath>
+    </Reference>
+    <Reference Include="SLZ.Marrow">
+      <HintPath>$(GameDir)\MelonLoader\Managed\SLZ.Marrow.dll</HintPath>
+    </Reference>
+    <Reference Include="SLZ.Marrow.SDK">
+      <HintPath>$(GameDir)\MelonLoader\Managed\SLZ.Marrow.SDK.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="UnhollowerBaseLib">
+      <HintPath>$(GameDir)\MelonLoader\Managed\UnhollowerBaseLib.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.TextMeshPro">
+      <HintPath>$(GameDir)\MelonLoader\Managed\Unity.TextMeshPro.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine">
+      <HintPath>$(GameDir)\MelonLoader\Managed\UnityEngine.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.CoreModule">
+      <HintPath>$(GameDir)\MelonLoader\Managed\UnityEngine.CoreModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.JSONSerializeModule">
+      <HintPath>..\..\..\..\Program Files (x86)\Steam\steamapps\common\BONELAB\MelonLoader\Managed\UnityEngine.JSONSerializeModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.PhysicsModule">
+      <HintPath>D:\SteamLibrary\steamapps\common\BONELAB\MelonLoader\Managed\UnityEngine.PhysicsModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.UI">
+      <HintPath>$(GameDir)\MelonLoader\Managed\UnityEngine.UI.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

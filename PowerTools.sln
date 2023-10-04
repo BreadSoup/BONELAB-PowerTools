@@ -4,8 +4,6 @@ VisualStudioVersion = 17.4.33205.214
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PowerTools", "Main\PowerTools.csproj", "{0DEB755F-D57A-4285-9D70-C592E340CDB4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PowerToolsFusionModule", "FusionModule\PowerToolsFusionModule.csproj", "{D15F9CD6-DB64-4B34-AE25-8011D98FFEFE}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -16,10 +14,6 @@ Global
 		{0DEB755F-D57A-4285-9D70-C592E340CDB4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0DEB755F-D57A-4285-9D70-C592E340CDB4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0DEB755F-D57A-4285-9D70-C592E340CDB4}.Release|Any CPU.Build.0 = Release|Any CPU
-		{D15F9CD6-DB64-4B34-AE25-8011D98FFEFE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{D15F9CD6-DB64-4B34-AE25-8011D98FFEFE}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{D15F9CD6-DB64-4B34-AE25-8011D98FFEFE}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{D15F9CD6-DB64-4B34-AE25-8011D98FFEFE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
