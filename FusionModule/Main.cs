@@ -20,7 +20,7 @@ using UnityEngine;
 
 namespace PowerToolsFusionModule
 {
-    internal abstract partial class Main : MelonMod
+    internal partial class Main : MelonMod
     {
         [HarmonyLib.HarmonyPatch(typeof(PowerTools.Tools.Loadouts), "FusionModuleSender")]
         public class FusionModuleSender : Module
@@ -29,31 +29,20 @@ namespace PowerToolsFusionModule
             
             public static void Prefix(string barcode, string slotPath)
             {
+                MelonLogger.Msg("prefix");
                 if (NetworkInfo.IsClient)
                 {
+                    MelonLogger.Msg("is client");
                     using (var writer = FusionWriter.Create())
                     {
-                        using (var data = BasicStringData.CreateBarcode(barcode))
+                        using (var data = BasicStringData.Create(barcode, slotPath))
                         {
                             writer.Write(data);
                             using (var message = FusionMessage.ModuleCreate<BasicStringMessage>(writer))
                             {
+                                MelonLogger.Msg("sending message");
                                 MessageSender.SendToServer(NetworkChannel.Reliable, message);
                             }
-                        }
-                        using (var data = BasicStringData.CreateSlotPath(slotPath))
-                        {
-                            writer.Write(data);
-                            using (var message = FusionMessage.ModuleCreate<BasicStringMessage>(writer))
-                            {
-                                MessageSender.SendToServer(NetworkChannel.Reliable, message);
-                            }
-                        }
-                        
-                        writer.Write(PlayerIdManager.LocalSmallId);
-                        using (var message = FusionMessage.ModuleCreate<BasicStringMessage>(writer))
-                        {
-                            MessageSender.SendToServer(NetworkChannel.Reliable, message);
                         }
                     }
                 }
@@ -65,7 +54,8 @@ namespace PowerToolsFusionModule
 
             public string SlotPath;
 
-            public byte PlayerId;
+            public byte PlayerID;
+            
             
 
             public void Dispose()
@@ -77,7 +67,6 @@ namespace PowerToolsFusionModule
             {
                 writer.Write(Barcode);
                 writer.Write(SlotPath);
-                writer.Write(PlayerId);
                 
             }
 
@@ -86,20 +75,15 @@ namespace PowerToolsFusionModule
                 Barcode = reader.ReadString();
                 SlotPath = reader.ReadString();
             }
-
-            public static BasicStringData CreateBarcode(string message)
-            {
-                return new BasicStringData()
-                {
-                    Barcode = message,
-                };
-            }
             
-            public static BasicStringData CreateSlotPath(string message)
+            
+            public static BasicStringData Create(string slotMessage, string barcodeMessage)
             {
                 return new BasicStringData()
                 {
-                    SlotPath = message,
+                    SlotPath = slotMessage,
+                    Barcode = barcodeMessage,
+                    PlayerID = PlayerIdManager.LocalSmallId
                 };
             }
             
@@ -114,22 +98,24 @@ namespace PowerToolsFusionModule
                 {
                     using (var data = reader.ReadFusionSerializable<BasicStringData>())
                     {
-                        if (data.Barcode != null && data.SlotPath != null && data.PlayerId != null)
+                        MelonLogger.Msg("message recived doing check");
+                        if (data.Barcode != null && data.SlotPath != null)
                         {
-
+                            MelonLogger.Msg("check passed");
 
                             // If this is handled by the socket server, and we are running the server, bounce it to all clients
                             // You can choose this way or other ways, but the behaviour is up to you!
-                            if (NetworkInfo.IsServer && isServerHandled)
+                            if (NetworkInfo.IsServer)
                             {
                                 PlayerRep rep = null;
-                                var slot = GameObject.Find(data.SlotPath);
                                 
-                                PlayerRepManager.TryGetPlayerRep(data.PlayerId, out rep);
+                                PlayerRepManager.TryGetPlayerRep(data.PlayerID, out rep);
                                 RigManager rig = rep.RigReferences.RigManager;
                                 var head = rig.physicsRig.m_head.transform;; //should work
                                 
-            
+                                
+                                var slot = GetSlot(data.SlotPath, rig);
+                                
                                 var reference = new SpawnableCrateReference(data.Barcode);
 
                                 var spawnable = new Spawnable()
@@ -146,7 +132,7 @@ namespace PowerToolsFusionModule
                                 {
                                     //TODO: if on a fusion server make drop weapon destroy the weapon instead of dropping it or just dont spawn weapon into holster if there is a weapon in it
                 
-                                    slot.GetComponent<InventorySlotReceiver>().DespawnContents();
+                                    slot.DespawnContents();
                                     MelonLogger.Msg("Loaded object in holster with barcode ");
                                     var gun /*Genius variable rename I know*/ = go.GetComponent<Gun>(); //Thanks Swipez for some of the code used in this method
                                     if (gun != null)
@@ -156,16 +142,11 @@ namespace PowerToolsFusionModule
                                         gun.Charge();
                                         MelonCoroutines.Start(WaitAndFixGun(gun));
                                     }
-                                    slot.GetComponent<InventorySlotReceiver>().InsertInSlot(go.GetComponent<InteractableHost>());
+                                    slot.InsertInSlot(go.GetComponent<InteractableHost>());
+                                    MelonLogger.Msg("Loaded object in holster");
                     
                                 }
-                            }
-                            // Otherwise, we handle the message
-                            else
-                            {
-                                
-
-                            }
+                            } 
                         }
                     }
                 }
@@ -179,6 +160,41 @@ namespace PowerToolsFusionModule
                 gun.CompleteSlideReturn();
             }
         }
+        
+        public static InventorySlotReceiver GetSlot(string slotName, RigManager rig)
+        {
+            if (slotName == "[PhysicsRig]/Head/HeadSlotContainer/WeaponReciever_01")
+            {
+                return rig.physicsRig.m_head.gameObject.GetComponentInChildren<InventorySlotReceiver>();
+            }
+
+            if (slotName == "[PhysicsRig]/Chest/BackLf/ItemReciever")
+            {
+                return rig.physicsRig.m_chest.transform.FindChild("BackLf").gameObject.GetComponentInChildren<InventorySlotReceiver>();
+            }
+            
+            if (slotName == "[PhysicsRig]/Chest/BackRt/ItemReciever")
+            {
+                return rig.physicsRig.m_chest.transform.FindChild("BackRt").gameObject.GetComponentInChildren<InventorySlotReceiver>();
+            }
+            
+            if (slotName == "[PhysicsRig]/Spine/SideLf/ItemReciever")
+            {
+                return rig.physicsRig.m_spine.FindChild("SideLf").gameObject.GetComponentInChildren<InventorySlotReceiver>();
+            }
+            
+            if (slotName == "[PhysicsRig]/Spine/SideRt/ItemReciever")
+            {
+                return rig.physicsRig.m_spine.FindChild("SideRt").gameObject.GetComponentInChildren<InventorySlotReceiver>();
+            }
+            
+            if (slotName == "[PhysicsRig]/Spine/BackCt/ItemReciever")
+            {
+                return rig.physicsRig.m_spine.FindChild("BackCt").gameObject.GetComponentInChildren<InventorySlotReceiver>();
+            }
+
+            return null;
+        } 
 
     }
 }

@@ -1,6 +1,6 @@
 ﻿namespace PowerToolsFusionModule
 {
-    internal abstract partial class Main
+    internal partial class Main
     {
         internal const string Name = "Power Tools Fusion Module";
         internal const string Description = null;
