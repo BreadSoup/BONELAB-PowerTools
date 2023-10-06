@@ -251,7 +251,7 @@ namespace PowerTools.Tools
             }
         }
 
-        public static void FusionModuleSender(string barcode, String slotPath)
+        public static void FusionModuleSender(string barcode, string slotPath)
         {
             
         }

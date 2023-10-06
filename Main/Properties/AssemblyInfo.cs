@@ -11,7 +11,7 @@ using MelonLoader;
 [assembly: AssemblyVersion(PowerTools.Main.Version)]
 [assembly: AssemblyFileVersion(PowerTools.Main.Version)]
 [assembly: MelonInfo(typeof(PowerTools.Main), PowerTools.Main.Name, PowerTools.Main.Version, PowerTools.Main.Author, PowerTools.Main.DownloadLink)]
-[assembly: MelonColor(System.ConsoleColor.White)]
+[assembly: MelonColor(System.ConsoleColor.Cyan)]
 
 // Create and Setup a MelonGame Attribute to mark a Melon as Universal or Compatible with specific Games.
 // If no MelonGame Attribute is found or any of the Values for any MelonGame Attribute on the Melon is null or empty it will be assumed the Melon is Universal.
