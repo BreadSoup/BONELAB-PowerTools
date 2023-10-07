@@ -41,6 +41,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="PowerToolsFusionModule.csproj.user" />
+  </ItemGroup>
+  <ItemGroup>
     <Reference Include="0Harmony">
       <HintPath>$(GameDir)\MelonLoader\0Harmony.dll</HintPath>
     </Reference>
@@ -170,7 +173,7 @@
       <HintPath>$(GameDir)\MelonLoader\Managed\Il2CppSystem.Xml.Linq.dll</HintPath>
     </Reference>
     <Reference Include="LabFusion">
-      <HintPath>D:\SteamLibrary\steamapps\common\BONELAB\Mods\LabFusion.dll</HintPath>
+      <HintPath>$(GameDir)\Mods\LabFusion.dll</HintPath>
     </Reference>
     <Reference Include="MelonLoader">
       <HintPath>$(GameDir)\MelonLoader\MelonLoader.dll</HintPath>
@@ -206,9 +209,6 @@
     <Reference Include="Mono.WebBrowser">
       <HintPath>$(GameDir)\MelonLoader\Managed\Mono.WebBrowser.dll</HintPath>
     </Reference>
-    <Reference Include="PowerTools">
-      <HintPath>D:\SteamLibrary\steamapps\common\BONELAB\Mods\PowerTools.dll</HintPath>
-    </Reference>
     <Reference Include="SLZ.Marrow">
       <HintPath>$(GameDir)\MelonLoader\Managed\SLZ.Marrow.dll</HintPath>
     </Reference>
@@ -228,11 +228,8 @@
     <Reference Include="UnityEngine.CoreModule">
       <HintPath>$(GameDir)\MelonLoader\Managed\UnityEngine.CoreModule.dll</HintPath>
     </Reference>
-    <Reference Include="UnityEngine.JSONSerializeModule">
-      <HintPath>..\..\..\..\Program Files (x86)\Steam\steamapps\common\BONELAB\MelonLoader\Managed\UnityEngine.JSONSerializeModule.dll</HintPath>
-    </Reference>
     <Reference Include="UnityEngine.PhysicsModule">
-      <HintPath>D:\SteamLibrary\steamapps\common\BONELAB\MelonLoader\Managed\UnityEngine.PhysicsModule.dll</HintPath>
+      <HintPath>$(GameDir)\MelonLoader\Managed\UnityEngine.PhysicsModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.UI">
       <HintPath>$(GameDir)\MelonLoader\Managed\UnityEngine.UI.dll</HintPath>
@@ -243,6 +240,9 @@
       <Project>{0deb755f-d57a-4285-9d70-c592e340cdb4}</Project>
       <Name>PowerTools</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="PowerToolsFusionModule.csproj.user" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

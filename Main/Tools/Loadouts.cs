@@ -6,7 +6,6 @@ using BoneLib;
 using BoneLib.BoneMenu;
 using BoneLib.BoneMenu.Elements;
 using BoneLib.Nullables;
-using Il2CppNewtonsoft.Json;
 using Il2CppSystem.Collections.Generic;
 using MelonLoader;
 using SLZ.Interaction;
@@ -51,6 +50,8 @@ namespace PowerTools.Tools
 
         public static void BoneMenuCreator()
         {
+            if (!Directory.Exists(LoadoutPath))
+                Directory.CreateDirectory(LoadoutPath);
             _loadouts = Main.Category.CreateCategory("Loadouts", "#ff4060");
             _loadouts.CreateFunctionElement("Save Current Loadout", Color.green, SaveLoadout);
 

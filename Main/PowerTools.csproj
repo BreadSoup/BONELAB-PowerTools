@@ -146,9 +146,6 @@
     <Reference Include="Il2Cppmscorlib">
       <HintPath>$(GameDir)\MelonLoader\Managed\Il2Cppmscorlib.dll</HintPath>
     </Reference>
-    <Reference Include="Il2CppNewtonsoft.Json">
-      <HintPath>$(GameDir)\MelonLoader\Managed\Il2CppNewtonsoft.Json.dll</HintPath>
-    </Reference>
     <Reference Include="Il2CppSystem">
       <HintPath>$(GameDir)\MelonLoader\Managed\Il2CppSystem.dll</HintPath>
     </Reference>
@@ -235,11 +232,8 @@
     <Reference Include="UnityEngine.CoreModule">
       <HintPath>$(GameDir)\MelonLoader\Managed\UnityEngine.CoreModule.dll</HintPath>
     </Reference>
-    <Reference Include="UnityEngine.JSONSerializeModule">
-      <HintPath>..\..\..\..\Program Files (x86)\Steam\steamapps\common\BONELAB\MelonLoader\Managed\UnityEngine.JSONSerializeModule.dll</HintPath>
-    </Reference>
     <Reference Include="UnityEngine.PhysicsModule">
-      <HintPath>D:\SteamLibrary\steamapps\common\BONELAB\MelonLoader\Managed\UnityEngine.PhysicsModule.dll</HintPath>
+      <HintPath>$(GameDir)\MelonLoader\Managed\UnityEngine.PhysicsModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.UI">
       <HintPath>$(GameDir)\MelonLoader\Managed\UnityEngine.UI.dll</HintPath>

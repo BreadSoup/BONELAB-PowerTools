@@ -1,5 +1,8 @@
 ﻿using System;
 using System.Collections;
+using System.IO;
+using System.Linq;
+using System.Reflection;
 using BoneLib;
 using BoneLib.BoneMenu;
 using BoneLib.BoneMenu.Elements;
@@ -8,8 +11,8 @@ using LabFusion;
 using LabFusion.Data;
 using LabFusion.Network;
 using LabFusion.Representation;
-using MelonLoader;
 using LabFusion.SDK.Modules;
+using MelonLoader;
 using SLZ.Interaction;
 using SLZ.Marrow.Data;
 using SLZ.Marrow.Pool;
@@ -17,13 +20,21 @@ using SLZ.Marrow.Warehouse;
 using SLZ.Props.Weapons;
 using SLZ.Rig;
 using UnityEngine;
+using Module = LabFusion.SDK.Modules.Module;
+
 
 namespace PowerToolsFusionModule
 {
     internal partial class Main : MelonMod
     {
+        public override void OnInitializeMelon() 
+        {
+            MelonLogger.Msg("Loading module");
+            ModuleHandler.LoadModule(System.Reflection.Assembly.GetExecutingAssembly());
+        }
+        
         [HarmonyLib.HarmonyPatch(typeof(PowerTools.Tools.Loadouts), "FusionModuleSender")]
-        public class FusionModuleSender : Module
+        public class FusionModuleSender
         {
             public static FusionModuleSender Instance { get; private set; }
             
@@ -33,15 +44,21 @@ namespace PowerToolsFusionModule
                 if (NetworkInfo.IsClient)
                 {
                     MelonLogger.Msg("is client");
+                    MelonLogger.Msg(barcode);
+                    MelonLogger.Msg(slotPath);
                     using (var writer = FusionWriter.Create())
                     {
+                        MelonLogger.Msg("breakpoint 1");
                         using (var data = BasicStringData.Create(barcode, slotPath))
                         {
+                            MelonLogger.Msg("breakpoint 2");
                             writer.Write(data);
+                            MelonLogger.Msg("breakpoint 3");
                             using (var message = FusionMessage.ModuleCreate<BasicStringMessage>(writer))
                             {
                                 MelonLogger.Msg("sending message");
                                 MessageSender.SendToServer(NetworkChannel.Reliable, message);
+                                MelonLogger.Msg("message sent");
                             }
                         }
                     }
@@ -79,6 +96,7 @@ namespace PowerToolsFusionModule
             
             public static BasicStringData Create(string slotMessage, string barcodeMessage)
             {
+                MelonLogger.Msg(PlayerIdManager.LocalSmallId);
                 return new BasicStringData()
                 {
                     SlotPath = slotMessage,
