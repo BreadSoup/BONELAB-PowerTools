@@ -25,14 +25,25 @@ using Module = LabFusion.SDK.Modules.Module;
 
 namespace PowerToolsFusionModule
 {
+
     internal partial class Main : MelonMod
     {
-        public override void OnInitializeMelon() 
+
+        public override void OnInitializeMelon()
         {
             MelonLogger.Msg("Loading module");
             ModuleHandler.LoadModule(System.Reflection.Assembly.GetExecutingAssembly());
         }
-        
+    }
+
+    public class LoadoutsModule : Module
+        {
+            public override void OnModuleLoaded()
+            {
+                MelonLogger.Msg("Loaded PowerTools Module!");
+            }
+        }
+
         [HarmonyLib.HarmonyPatch(typeof(PowerTools.Tools.Loadouts), "FusionModuleSender")]
         public class FusionModuleSender
         {
@@ -59,7 +70,7 @@ namespace PowerToolsFusionModule
                                 MelonLogger.Msg("sending message");
                                 MessageSender.SendToServer(NetworkChannel.Reliable, message);
                                 MelonLogger.Msg("message sent");
-                            }
+                            }                
                         }
                     }
                 }
@@ -108,7 +119,7 @@ namespace PowerToolsFusionModule
             
         }
 
-        public class BasicStringMessage : ModuleMessageHandler
+        public class BasicStringMessage : ModuleMessageHandler 
         {
             public override void HandleMessage(byte[] bytes, bool isServerHandled = false)
             {
@@ -132,7 +143,7 @@ namespace PowerToolsFusionModule
                                 var head = rig.physicsRig.m_head.transform;; //should work
                                 
                                 
-                                var slot = GetSlot(data.SlotPath, rig);
+                                var slot = SlotGetter.GetSlot(data.SlotPath, rig);
                                 
                                 var reference = new SpawnableCrateReference(data.Barcode);
 
@@ -178,7 +189,9 @@ namespace PowerToolsFusionModule
                 gun.CompleteSlideReturn();
             }
         }
-        
+
+        public class SlotGetter //im so good at naming things
+        {
         public static InventorySlotReceiver GetSlot(string slotName, RigManager rig)
         {
             if (slotName == "[PhysicsRig]/Head/HeadSlotContainer/WeaponReciever_01")
@@ -188,31 +201,35 @@ namespace PowerToolsFusionModule
 
             if (slotName == "[PhysicsRig]/Chest/BackLf/ItemReciever")
             {
-                return rig.physicsRig.m_chest.transform.FindChild("BackLf").gameObject.GetComponentInChildren<InventorySlotReceiver>();
+                return rig.physicsRig.m_chest.transform.FindChild("BackLf").gameObject
+                    .GetComponentInChildren<InventorySlotReceiver>();
             }
-            
+
             if (slotName == "[PhysicsRig]/Chest/BackRt/ItemReciever")
             {
-                return rig.physicsRig.m_chest.transform.FindChild("BackRt").gameObject.GetComponentInChildren<InventorySlotReceiver>();
+                return rig.physicsRig.m_chest.transform.FindChild("BackRt").gameObject
+                    .GetComponentInChildren<InventorySlotReceiver>();
             }
-            
+
             if (slotName == "[PhysicsRig]/Spine/SideLf/ItemReciever")
             {
-                return rig.physicsRig.m_spine.FindChild("SideLf").gameObject.GetComponentInChildren<InventorySlotReceiver>();
+                return rig.physicsRig.m_spine.FindChild("SideLf").gameObject
+                    .GetComponentInChildren<InventorySlotReceiver>();
             }
-            
+
             if (slotName == "[PhysicsRig]/Spine/SideRt/ItemReciever")
             {
-                return rig.physicsRig.m_spine.FindChild("SideRt").gameObject.GetComponentInChildren<InventorySlotReceiver>();
+                return rig.physicsRig.m_spine.FindChild("SideRt").gameObject
+                    .GetComponentInChildren<InventorySlotReceiver>();
             }
-            
+
             if (slotName == "[PhysicsRig]/Spine/BackCt/ItemReciever")
             {
-                return rig.physicsRig.m_spine.FindChild("BackCt").gameObject.GetComponentInChildren<InventorySlotReceiver>();
+                return rig.physicsRig.m_spine.FindChild("BackCt").gameObject
+                    .GetComponentInChildren<InventorySlotReceiver>();
             }
 
             return null;
-        } 
-
-    }
+        }
+        }
 }
