@@ -36,17 +36,15 @@ namespace PowerToolsFusionModule
         }
     }
 
-    public class LoadoutsModule : Module
+
+
+        [HarmonyLib.HarmonyPatch(typeof(PowerTools.Tools.Loadouts), "FusionModuleSender")]
+        public class FusionModuleSender : Module
         {
             public override void OnModuleLoaded()
             {
                 MelonLogger.Msg("Loaded PowerTools Module!");
             }
-        }
-
-        [HarmonyLib.HarmonyPatch(typeof(PowerTools.Tools.Loadouts), "FusionModuleSender")]
-        public class FusionModuleSender
-        {
             public static FusionModuleSender Instance { get; private set; }
             
             public static void Prefix(string barcode, string slotPath)
@@ -123,8 +121,10 @@ namespace PowerToolsFusionModule
         {
             public override void HandleMessage(byte[] bytes, bool isServerHandled = false)
             {
+                MelonLogger.Msg("message recived");
                 using (var reader = FusionReader.Create(bytes))
                 {
+                    MelonLogger.Msg("message recived part 2");
                     using (var data = reader.ReadFusionSerializable<BasicStringData>())
                     {
                         MelonLogger.Msg("message recived doing check");
