@@ -39,6 +39,7 @@
     <Compile Include="BuildInfo.cs" />
     <Compile Include="Main.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Tools\BrickShooter.cs" />
     <Compile Include="Tools\BugoSpray.cs" />
     <Compile Include="Tools\ButtonDisabler.cs" />
     <Compile Include="Tools\DeathTimeCustomizer.cs" />

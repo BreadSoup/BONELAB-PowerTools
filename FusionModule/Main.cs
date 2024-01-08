@@ -35,10 +35,15 @@ namespace PowerToolsFusionModule
             ModuleHandler.LoadModule(System.Reflection.Assembly.GetExecutingAssembly());
         }
     }
-
-
-
-        [HarmonyLib.HarmonyPatch(typeof(PowerTools.Tools.Loadouts), "FusionModuleSender")]
+    [HarmonyLib.HarmonyPatch(typeof(PowerTools.Tools.Loadouts), "FusionModuleSender")]
+    public class ModuleCaller
+    {
+        public static void Prefix(string barcode, string slotPath)
+        {
+            FusionModuleSender.Sender(barcode, slotPath);
+        }
+    }
+    
         public class FusionModuleSender : Module
         {
             public override void OnModuleLoaded()
@@ -47,8 +52,18 @@ namespace PowerToolsFusionModule
             }
             public static FusionModuleSender Instance { get; private set; }
             
-            public static void Prefix(string barcode, string slotPath)
+            public static void Sender(string barcode, string slotPath)
             {
+                if (slotPath == null)
+                {
+                    MelonLogger.Msg("slotPath is null");
+                    return;
+                }
+                if (barcode == null) // this should never be null but somehow has been?????
+                {
+                    MelonLogger.Msg("barcode is null");
+                    return;
+                }
                 MelonLogger.Msg("prefix");
                 if (NetworkInfo.IsClient)
                 {
@@ -121,13 +136,13 @@ namespace PowerToolsFusionModule
         {
             public override void HandleMessage(byte[] bytes, bool isServerHandled = false)
             {
-                MelonLogger.Msg("message recived");
+                MelonLogger.Msg("message received");
                 using (var reader = FusionReader.Create(bytes))
                 {
-                    MelonLogger.Msg("message recived part 2");
+                    MelonLogger.Msg("message received part 2");
                     using (var data = reader.ReadFusionSerializable<BasicStringData>())
                     {
-                        MelonLogger.Msg("message recived doing check");
+                        MelonLogger.Msg("message received doing check");
                         if (data.Barcode != null && data.SlotPath != null)
                         {
                             MelonLogger.Msg("check passed");

@@ -18,16 +18,23 @@ namespace PowerTools
 
         public override void OnInitializeMelon()
         {
-            MelonLogger.Msg("Game path: " + Application.dataPath);
             Hooking.OnLevelInitialized += (_) => { OnSceneAwake(); };
             MelonPrefCategory = MelonPreferences.CreateCategory("Power Tools");
+            
             DeathTimeCustomizer.MelonPreferencesCreator();
+            
             ReloadOnDeathCustomizer.MelonPreferencesCreator();
+            
             ButtonDisabler.MelonPreferencesCreator();
+            
             RagdollOnDeath.MelonPreferencesCreator();
+            
             VaultingToggle.MelonPreferencesCreator();
+            
             //Loadouts.MelonPreferencesCreator();
+            
             GravityAdjuster.MelonPreferencesCreator();
+            
             InfiniteAmmo.MelonPreferencesCreator();
 
 
@@ -45,13 +52,21 @@ namespace PowerTools
                 "<color=#00FFD4>s</color>",
                 Color.white);
             DeathTimeCustomizer.BoneMenuCreator();
+            
             ReloadOnDeathCustomizer.BoneMenuCreator();
+            
             ButtonDisabler.BoneMenuCreator();
+            
             RagdollOnDeath.BoneMenuCreator();
+            
             VaultingToggle.BoneMenuCreator();
+            
             GravityAdjuster.BoneMenuCreator();
+            
             Loadouts.BoneMenuCreator();
+            
             RagdollLegs.BoneMenuCreator();
+            
             InfiniteAmmo.BoneMenuCreator();
             
         }
@@ -70,7 +85,7 @@ namespace PowerTools
             GravityAdjuster.GravityAdjust();
         }
         
-        public override void OnUpdate()
+        public override void OnUpdate() // Only run tools under OnUpdate() if theres no alternatives and if an alternative is found please PR it
         {
             //BugoSpray.BugoRemover();
         }

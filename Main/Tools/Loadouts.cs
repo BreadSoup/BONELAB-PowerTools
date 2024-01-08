@@ -217,9 +217,12 @@ namespace PowerTools.Tools
 
         private static void SpawnLoadout(string barcodeValue, string slotPath)
         {
+            if (barcodeValue == null || slotPath == null)
+                return;
             var slot = GameObject.Find(slotPath);
             MelonLogger.Msg(slot.name);
             MelonLogger.Msg(Player.physicsRig.m_head.GetComponentInChildren<InventorySlotReceiver>());
+            MelonLogger.Msg(barcodeValue);
             
             FusionModuleSender(barcodeValue, slotPath);
             var head = Player.playerHead.transform;
