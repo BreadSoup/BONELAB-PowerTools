@@ -31,7 +31,7 @@ namespace PowerTools
             
             VaultingToggle.MelonPreferencesCreator();
             
-            //Loadouts.MelonPreferencesCreator();
+            //Loadouts.MelonPreferencesCreator(); removed
             
             GravityAdjuster.MelonPreferencesCreator();
             
@@ -63,7 +63,7 @@ namespace PowerTools
             
             GravityAdjuster.BoneMenuCreator();
             
-            Loadouts.BoneMenuCreator();
+            //Loadouts.BoneMenuCreator();
             
             RagdollLegs.BoneMenuCreator();
             
@@ -87,7 +87,7 @@ namespace PowerTools
         
         public override void OnUpdate() // Only run tools under OnUpdate() if theres no alternatives and if an alternative is found please PR it
         {
-            //BugoSpray.BugoRemover();
+            //BugoSpray.BugoRemover(); this is stupid I only made it for a bit
         }
 
 
