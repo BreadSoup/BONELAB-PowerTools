@@ -65,9 +65,9 @@ namespace PowerTools
             
             //Loadouts.BoneMenuCreator();
             
-            RagdollLegs.BoneMenuCreator();
-            
             InfiniteAmmo.BoneMenuCreator();
+            
+            RagdollLegs.BoneMenuCreator();
             
         }
 
@@ -88,6 +88,8 @@ namespace PowerTools
         public override void OnUpdate() // Only run tools under OnUpdate() if theres no alternatives and if an alternative is found please PR it
         {
             //BugoSpray.BugoRemover(); this is stupid I only made it for a bit
+            
+            //BrickShooter.dfgijkhokjnhgrshjikhjiusgihuseg(); IT DOESNT EVEN SHOOT BRICKS??????????? WHY
         }
 
 

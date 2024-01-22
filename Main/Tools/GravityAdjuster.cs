@@ -23,7 +23,7 @@ namespace PowerTools.Tools
         
         public static void BoneMenuCreator()
         {
-            var gravityCustomizer = Main.Category.CreateCategory("Gravity Adjuster", "#cc51fc");
+            var gravityCustomizer = Main.Category.CreateCategory("Gravity Adjuster", "#4555ed");
         
             gravityCustomizer.CreateBoolElement("Mod Toggle", Color.yellow, _isEnabled, OnSetEnabled);
 
@@ -31,7 +31,7 @@ namespace PowerTools.Tools
             FloatElement one = null;
             FloatElement ten = null;
             
-            var pointOne = gravityCustomizer.CreateFloatElement("Gravity Value (0.1)", Color.yellow, _gravity, 0.1f, -25f, 25f, (r) =>
+            var pointOne = gravityCustomizer.CreateFloatElement("Gravity Value (0.1)", "#cc51fc", _gravity, 0.1f, -25f, 25f, (r) =>
             {
                 MelonPrefGravityValue.Value = r;
                 Main.MelonPrefCategory.SaveToFile(false);
@@ -40,7 +40,7 @@ namespace PowerTools.Tools
                 ten?.SetValue(r);
                 GravityAdjust();
             });
-            one = gravityCustomizer.CreateFloatElement("Gravity Value (1)", Color.yellow, _gravity, 1f, -25f, 25f, (r) =>
+            one = gravityCustomizer.CreateFloatElement("Gravity Value (1)", "#cc51fc", _gravity, 1f, -25f, 25f, (r) =>
             {
                 MelonPrefGravityValue.Value = r;
                 Main.MelonPrefCategory.SaveToFile(false);
@@ -49,7 +49,7 @@ namespace PowerTools.Tools
                 _gravity = r;
                 GravityAdjust();
             });
-            ten = gravityCustomizer.CreateFloatElement("Gravity Value (5)", Color.yellow, _gravity, 5f, -25f, 25f, (r) =>
+            ten = gravityCustomizer.CreateFloatElement("Gravity Value (5)", "#cc51fc", _gravity, 5f, -25f, 25f, (r) =>
             {
                 MelonPrefGravityValue.Value = r;
                 Main.MelonPrefCategory.SaveToFile(false);
