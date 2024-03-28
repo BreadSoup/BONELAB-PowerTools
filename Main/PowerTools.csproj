@@ -239,5 +239,16 @@
       <HintPath>$(GameDir)\MelonLoader\Managed\UnityEngine.UI.dll</HintPath>
     </Reference>
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="Gifs\auto load mags.gif" />
+    <Content Include="Gifs\Button Disabler.gif" />
+    <Content Include="Gifs\Death time customizer.gif" />
+    <Content Include="Gifs\Gravity adjuster.gif" />
+    <Content Include="Gifs\inf ammo.gif" />
+    <Content Include="Gifs\ragdoll legs.gif" />
+    <Content Include="Gifs\Ragdoll On Death.gif" />
+    <Content Include="Gifs\Reload On Death.gif" />
+    <Content Include="Gifs\Vaulting toggle.gif" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
